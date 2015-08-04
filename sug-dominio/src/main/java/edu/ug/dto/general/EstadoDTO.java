@@ -1,4 +1,4 @@
-package edu.ug.dto.generic;
+package edu.ug.dto.general;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

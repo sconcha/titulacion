@@ -15,7 +15,7 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import edu.ug.dto.generic.EstadoDTO;
+import edu.ug.dto.general.EstadoDTO;
 import edu.ug.dto.generic.interfaz.IGenericDTO;
 import edu.ug.util.dto.Generic;
 
@@ -45,7 +45,7 @@ public class GenericDTO<ID> extends Generic<String, String> implements
 	@Column(name = "FECHAACTUALIZACION")
 	protected Date fechaActualizacion;
 	
-	@JoinColumn(name = "ESTADO")
+	@JoinColumn(name = "ESTADO_ID")
 	@ManyToOne(fetch=FetchType.EAGER)
 	protected EstadoDTO estado;
 

@@ -3,8 +3,8 @@ package edu.ug.dto;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.classic.Session;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ec.edu.ug.chamaleon.dto.Item;
 import ec.edu.ug.chamaleon.dto.Order;
-
-
 
 @ContextConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -65,7 +63,8 @@ public class OrderPersistenceTests {
 		// parent in the item)...
 		session.clear();
 		Order other = (Order) session
-				.createQuery( "select o from Order o join o.items i where i.product=:product")
+				.createQuery(
+						"select o from Order o join o.items i where i.product=:product")
 				.setString("product", "foo").uniqueResult();
 		assertEquals(1, other.getItems().size());
 		assertEquals(other, other.getItems().iterator().next().getOrder());

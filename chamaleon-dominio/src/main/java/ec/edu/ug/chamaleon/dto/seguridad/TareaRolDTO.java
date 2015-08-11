@@ -1,22 +1,20 @@
 package ec.edu.ug.chamaleon.dto.seguridad;
 
-import java.util.List;
-
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import ec.edu.ug.chamaleon.util.dto.generic.impl.GenericDTO;
 
 @Entity
-@Table(name="USEGTROL")
-public class RolDTO extends GenericDTO<RolDTO>{
+@Table(name="USEGTTAREA_ROL")
+public class TareaRolDTO extends GenericDTO<TareaRolDTO>{
 	
 	private static final long serialVersionUID = 9029604394724370809L;
 	
@@ -25,14 +23,14 @@ public class RolDTO extends GenericDTO<RolDTO>{
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SG_ROL")
 	private Long id;
 	
-	@Column(name="CODIGO",length=50)
-	private String codigo;
+	@JoinColumn(name="TAREA_ID")
+	@ManyToOne(fetch=FetchType.LAZY)
+	private TareaDTO tarea;
 	
-	@OneToMany(mappedBy="rol",fetch=FetchType.LAZY)
-	private List<UsuarioRolDTO> usuarioRolDTOs;
+	@JoinColumn(name="ROL")
+	@ManyToOne(fetch=FetchType.LAZY)
+	private RolDTO rol;
 	
-	@OneToMany(mappedBy="rol",fetch=FetchType.LAZY)
-	private List<TareaRolDTO> tareaRolDTOs;
 	
 	public Long getId() {		
 		return id;
@@ -44,28 +42,27 @@ public class RolDTO extends GenericDTO<RolDTO>{
 
 	@Override
 	public String getCodigo() {
-		return codigo;
+		return id.toString();
 	}
 
 	@Override
 	public void setCodigo(String codigo) {
-		this.codigo=codigo;		
 	}
 
-	public List<UsuarioRolDTO> getUsuarioRolDTOs() {
-		return usuarioRolDTOs;
+	public TareaDTO getTarea() {
+		return tarea;
 	}
 
-	public void setUsuarioRolDTOs(List<UsuarioRolDTO> usuarioRolDTOs) {
-		this.usuarioRolDTOs = usuarioRolDTOs;
+	public void setTarea(TareaDTO tarea) {
+		this.tarea = tarea;
 	}
 
-	public List<TareaRolDTO> getTareaRolDTOs() {
-		return tareaRolDTOs;
+	public RolDTO getRol() {
+		return rol;
 	}
 
-	public void setTareaRolDTOs(List<TareaRolDTO> tareaRolDTOs) {
-		this.tareaRolDTOs = tareaRolDTOs;
+	public void setRol(RolDTO rol) {
+		this.rol = rol;
 	}
 
 	

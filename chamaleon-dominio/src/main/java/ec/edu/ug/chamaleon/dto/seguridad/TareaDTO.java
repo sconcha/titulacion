@@ -1,5 +1,9 @@
 package ec.edu.ug.chamaleon.dto.seguridad;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -8,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -15,6 +20,9 @@ import org.hibernate.annotations.Type;
 
 import ec.edu.ug.chamaleon.util.dto.generic.impl.GenericDTO;
 import ec.edu.ug.chamaleon.util.type.BooleanToCharType;
+import ec.edu.ug.chamaleon.util.type.StringValuedEnum;
+import ec.edu.ug.chamaleon.util.type.StringValuedEnumReflect;
+import ec.edu.ug.chamaleon.util.type.StringValuedEnumType;
 
 @Entity
 @Table(name="USEGTTAREA")
@@ -100,7 +108,13 @@ public class TareaDTO extends GenericDTO<TareaDTO>{
 
 	@Column(name="ACCIONGENERICA",length=500)
 	private String accionGenerica;
-	
+
+	@Column(name="TIPO",length=1)
+	@Type(type=Tipo.TYPE)
+	private Tipo tipo;
+
+	@OneToMany(mappedBy="tarea",fetch=FetchType.LAZY)
+	private List<TareaRolDTO> tareaRolDTOs;
 	
 	public Long getId() {		
 		return id;
@@ -264,5 +278,72 @@ public class TareaDTO extends GenericDTO<TareaDTO>{
 		this.accionGenerica = accionGenerica;
 	}
 
+	public Tipo getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(Tipo tipo) {
+		this.tipo = tipo;
+	}
+
+	public List<TareaRolDTO> getTareaRolDTOs() {
+		return tareaRolDTOs;
+	}
+
+	public void setTareaRolDTOs(List<TareaRolDTO> tareaRolDTOs) {
+		this.tareaRolDTOs = tareaRolDTOs;
+	}
+
+
+
+	/**
+	 * 
+	 * @author Joel Alvarado
+	 *
+	 */
+	public enum Tipo implements StringValuedEnum<Tipo> {
+		 CABECERA ("C")
+		,DETALLE  ("D")
+		,TODOS	  ("T")
+		;
+
+		public static class Type extends StringValuedEnumType<Tipo> {}
+		public static final String TYPE = "ec.edu.ug.chamaleon.dto.seguridad.TareaDTO$Tipo$Type";
+
+		public boolean isCabecera()  { return this.equals(CABECERA);	}
+		public boolean isDetalle() 	 { return this.equals(DETALLE);		}
+		public boolean isTodos()  	 { return this.equals(TODOS); 		}
+		
+		private String val;
+		private String labelKey;
+		
+		public static Map<String, Tipo> LABELED_MAP;
+		
+		public static final List<Tipo> LIST =
+			Arrays.asList(Tipo.values());
+
+		private Tipo(String value) {
+			this.val = value;
+			this.labelKey = StringValuedEnumReflect.getLabelKeyFromEnum(this);
+		}
+		
+		public String getVal() {
+			return val;
+		}		
+		
+		public String getKey() {
+			return val;
+		}
+		public String getValue() {
+			return labelKey;
+		}
+		
+		public String getDescription() {
+			return getValue();
+		}
+		
+
+	}
+	
 	
 }

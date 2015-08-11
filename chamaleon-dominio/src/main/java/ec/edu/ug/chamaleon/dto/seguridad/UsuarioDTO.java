@@ -41,6 +41,10 @@ public class UsuarioDTO extends GenericDTO<UsuarioDTO>{
 	@OneToMany(mappedBy="usuario",fetch=FetchType.LAZY)
 	private List<UsuarioAlmacenDTO> usuarioAlmacenDTOs;
 	
+	@OneToMany(mappedBy="usuario",fetch=FetchType.LAZY)
+	private List<UsuarioRolDTO> usuarioRolDTOs;
+	
+	
 	public Long getId() {		
 		return id;
 	}
@@ -74,6 +78,23 @@ public class UsuarioDTO extends GenericDTO<UsuarioDTO>{
 	public void setClave(String clave) {
 		this.clave = clave;
 	}
+
+	public List<UsuarioAlmacenDTO> getUsuarioAlmacenDTOs() {
+		return usuarioAlmacenDTOs;
+	}
+
+	public void setUsuarioAlmacenDTOs(List<UsuarioAlmacenDTO> usuarioAlmacenDTOs) {
+		this.usuarioAlmacenDTOs = usuarioAlmacenDTOs;
+	}
+
+	public List<UsuarioRolDTO> getUsuarioRolDTOs() {
+		return usuarioRolDTOs;
+	}
+
+	public void setUsuarioRolDTOs(List<UsuarioRolDTO> usuarioRolDTOs) {
+		this.usuarioRolDTOs = usuarioRolDTOs;
+	}
+	
 	
 	
 

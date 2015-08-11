@@ -15,6 +15,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import ec.edu.ug.chamaleon.dto.seguridad.UsuarioAlmacenDTO;
+import ec.edu.ug.chamaleon.dto.seguridad.UsuarioRolDTO;
 import ec.edu.ug.chamaleon.util.dto.generic.interfaz.impl.GenericDTO;
 
 
@@ -55,6 +56,9 @@ public class AlmacenDTO extends GenericDTO<AlmacenDTO> {
 	
 	@OneToMany(mappedBy="almacen",fetch=FetchType.LAZY)
 	private List<UsuarioAlmacenDTO> usuarioAlmacenDTOs;
+	
+	@OneToMany(mappedBy="almacen",fetch=FetchType.LAZY)
+	private List<UsuarioRolDTO> usuarioRolDTOs;
 	
 	
 	public Long getId() {		
@@ -121,6 +125,22 @@ public class AlmacenDTO extends GenericDTO<AlmacenDTO> {
 
 	public void setFax(String fax) {
 		this.fax = fax;
+	}
+
+	public List<UsuarioAlmacenDTO> getUsuarioAlmacenDTOs() {
+		return usuarioAlmacenDTOs;
+	}
+
+	public void setUsuarioAlmacenDTOs(List<UsuarioAlmacenDTO> usuarioAlmacenDTOs) {
+		this.usuarioAlmacenDTOs = usuarioAlmacenDTOs;
+	}
+
+	public List<UsuarioRolDTO> getUsuarioRolDTOs() {
+		return usuarioRolDTOs;
+	}
+
+	public void setUsuarioRolDTOs(List<UsuarioRolDTO> usuarioRolDTOs) {
+		this.usuarioRolDTOs = usuarioRolDTOs;
 	}
 	
 

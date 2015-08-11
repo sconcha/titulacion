@@ -1,4 +1,4 @@
-package ec.edu.ug.chamaleon.util.dto.generic.interfaz.impl;
+package ec.edu.ug.chamaleon.util.dto.generic.impl;
 
 import java.io.Serializable;
 import java.util.Arrays;
@@ -13,7 +13,7 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.Type;
 
-import ec.edu.ug.chamaleon.util.dto.generic.interfaz.IGenericDTO;
+import ec.edu.ug.chamaleon.util.dto.generic.IGenericDTO;
 import ec.edu.ug.chamaleon.util.type.StringValuedEnum;
 import ec.edu.ug.chamaleon.util.type.StringValuedEnumReflect;
 import ec.edu.ug.chamaleon.util.type.StringValuedEnumType;

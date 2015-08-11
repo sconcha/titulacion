@@ -18,7 +18,7 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Type;
 
-import ec.edu.ug.chamaleon.util.dto.generic.interfaz.impl.GenericDTO;
+import ec.edu.ug.chamaleon.util.dto.generic.impl.GenericDTO;
 import ec.edu.ug.chamaleon.util.type.StringValuedEnum;
 import ec.edu.ug.chamaleon.util.type.StringValuedEnumReflect;
 import ec.edu.ug.chamaleon.util.type.StringValuedEnumType;

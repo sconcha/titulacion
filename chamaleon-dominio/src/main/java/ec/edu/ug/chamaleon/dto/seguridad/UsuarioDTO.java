@@ -15,7 +15,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import ec.edu.ug.chamaleon.dto.administracion.EmpresaPersonaDTO;
-import ec.edu.ug.chamaleon.util.dto.generic.interfaz.impl.GenericDTO;
+import ec.edu.ug.chamaleon.util.dto.generic.impl.GenericDTO;
 
 @Entity
 @Table(name="USEGTUSUARIO")

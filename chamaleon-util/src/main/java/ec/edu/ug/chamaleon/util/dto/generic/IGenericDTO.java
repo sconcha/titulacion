@@ -1,4 +1,4 @@
-package ec.edu.ug.chamaleon.util.dto.generic.interfaz;
+package ec.edu.ug.chamaleon.util.dto.generic;
 
 import ec.edu.ug.chamaleon.util.dto.Generic;
 

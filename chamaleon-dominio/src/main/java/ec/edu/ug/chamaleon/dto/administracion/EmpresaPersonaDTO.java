@@ -1,5 +1,7 @@
 package ec.edu.ug.chamaleon.dto.administracion;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -8,11 +10,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Type;
 
+import ec.edu.ug.chamaleon.dto.seguridad.UsuarioDTO;
 import ec.edu.ug.chamaleon.util.dto.generic.interfaz.impl.GenericDTO;
 import ec.edu.ug.chamaleon.util.type.BooleanToCharType;
 
@@ -51,6 +55,9 @@ public class EmpresaPersonaDTO extends GenericDTO<EmpresaPersonaDTO> {
 	@Column(name="ESEMPLEADO")
 	@Type(type=BooleanToCharType.TYPE)
 	private boolean empleado;
+	
+	@OneToMany(mappedBy="empresaPersona",fetch=FetchType.LAZY)
+	private List<UsuarioDTO> usuarioDTOs;
 
 	public Long getId() {		
 		return id;

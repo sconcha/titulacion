@@ -1,5 +1,7 @@
 package ec.edu.ug.chamaleon.dto.administracion;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -8,9 +10,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import ec.edu.ug.chamaleon.dto.seguridad.UsuarioAlmacenDTO;
 import ec.edu.ug.chamaleon.util.dto.generic.interfaz.impl.GenericDTO;
 
 
@@ -48,6 +52,10 @@ public class AlmacenDTO extends GenericDTO<AlmacenDTO> {
 	
 	@Column(name="FAX",length=200)
 	private String fax;
+	
+	@OneToMany(mappedBy="almacen",fetch=FetchType.LAZY)
+	private List<UsuarioAlmacenDTO> usuarioAlmacenDTOs;
+	
 	
 	public Long getId() {		
 		return id;

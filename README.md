@@ -1,2 +1,4 @@
 # titulacion
-Repositorio para mis proyectos de titulacion
+ERP ChamaleonERP
+
+copyright Unversidad de Guayaquil

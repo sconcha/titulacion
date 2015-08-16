@@ -24,6 +24,6 @@
   <modules>
     <module>chamaleon-util</module>
 	<module>chamaleon-dominio</module>
-	
+	<module>chamaleon-dao</module>	
   </modules>
 </project>

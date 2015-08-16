@@ -75,6 +75,17 @@
 			<scope>test</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>ec.edu.ug.chamaleon</groupId>
+			<artifactId>chamaleon-util</artifactId>
+			<version>1.0</version>
+		</dependency>		
+		<dependency>
+			<groupId>ec.edu.ug.chamaleon</groupId>
+			<artifactId>chamaleon-dominio</artifactId>
+			<version>1.0</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

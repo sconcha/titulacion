@@ -10,6 +10,7 @@ import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.Type;
 
@@ -21,6 +22,9 @@ import ec.edu.ug.erp.util.type.StringValuedEnumType;
 @MappedSuperclass
 public abstract class GenericDTO<DTO extends GenericDTO<DTO>> implements IGenericDTO<Long>,Serializable {
 	private static final long serialVersionUID = -374580369079967296L;
+	
+	@Transient
+	 private Class<DTO> clazz;
 	
 	@Column(name = "DESCRIPCION",length=500)
 	protected String descripcion;
@@ -36,6 +40,7 @@ public abstract class GenericDTO<DTO extends GenericDTO<DTO>> implements IGeneri
 	@Column(name = "ESTADO",length=2)
 	@Type(type=Estado.TYPE)
 	protected Estado estado;
+		
 	
 	public abstract String getCodigo();
 
@@ -108,6 +113,10 @@ public abstract class GenericDTO<DTO extends GenericDTO<DTO>> implements IGeneri
 	@Override
 	public final String toString() {
 		return String.format(" %s #%s [(%s) %s] ", this.getClass().getName(),this.getId()==null? "":this.getId(),this.getKey(),this.getValue());
+	}
+	
+	public DTO getInstance() throws InstantiationException, IllegalAccessException{		
+		return clazz.newInstance();
 	}
 	
 	/**

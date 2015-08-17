@@ -17,7 +17,6 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Type;
 
 import ec.edu.ug.erp.dto.seguridad.UsuarioDTO;
-import ec.edu.ug.erp.util.dto.generic.impl.GenericDTO;
 import ec.edu.ug.erp.util.type.BooleanToCharType;
 
 

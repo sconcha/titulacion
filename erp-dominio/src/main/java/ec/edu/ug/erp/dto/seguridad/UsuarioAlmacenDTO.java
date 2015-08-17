@@ -14,12 +14,11 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Type;
 
 import ec.edu.ug.erp.dto.administracion.AlmacenDTO;
-import ec.edu.ug.erp.util.dto.generic.impl.GenericDTO;
 import ec.edu.ug.erp.util.type.BooleanToCharType;
 
 @Entity
 @Table(name="USEGTUSUARIO_ALMACEN")
-public class UsuarioAlmacenDTO extends GenericDTO<UsuarioAlmacenDTO>{
+public class UsuarioAlmacenDTO extends GenericSeguridadDTO<UsuarioAlmacenDTO>{
 	
 	private static final long serialVersionUID = 9029604394724370809L;
 	

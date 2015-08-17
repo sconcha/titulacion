@@ -12,12 +12,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import ec.edu.ug.erp.util.dto.generic.impl.GenericDTO;
-
 
 @Entity
 @Table(name="UADMTREGION")
-public class RegionDTO extends GenericDTO<RegionDTO> {
+public class RegionDTO extends GenericAdministracionDTO<RegionDTO> {
 
 	private static final long serialVersionUID = 9029604394724370809L;
 	

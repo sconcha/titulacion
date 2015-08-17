@@ -10,11 +10,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import ec.edu.ug.erp.util.dto.generic.impl.GenericDTO;
-
 @Entity
 @Table(name="USEGTTAREA_ROL")
-public class TareaRolDTO extends GenericDTO<TareaRolDTO>{
+public class TareaRolDTO extends GenericSeguridadDTO<TareaRolDTO>{
 	
 	private static final long serialVersionUID = 9029604394724370809L;
 	

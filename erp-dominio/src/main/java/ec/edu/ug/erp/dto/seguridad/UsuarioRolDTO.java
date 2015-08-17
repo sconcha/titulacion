@@ -12,11 +12,10 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import ec.edu.ug.erp.dto.administracion.AlmacenDTO;
-import ec.edu.ug.erp.util.dto.generic.impl.GenericDTO;
 
 @Entity
 @Table(name="USEGTUSUARIO_ROL")
-public class UsuarioRolDTO extends GenericDTO<UsuarioRolDTO>{
+public class UsuarioRolDTO extends GenericSeguridadDTO<UsuarioRolDTO>{
 	
 	private static final long serialVersionUID = 9029604394724370809L;
 	

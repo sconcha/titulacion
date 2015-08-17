@@ -20,14 +20,13 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.Type;
 
-import ec.edu.ug.erp.util.dto.generic.impl.GenericDTO;
 import ec.edu.ug.erp.util.type.StringValuedEnum;
 import ec.edu.ug.erp.util.type.StringValuedEnumReflect;
 import ec.edu.ug.erp.util.type.StringValuedEnumType;
 
 @Entity
 @Table(name="UADMTPERSONA")
-public class PersonaDTO extends GenericDTO<PersonaDTO> {
+public class PersonaDTO extends GenericAdministracionDTO<PersonaDTO> {
 
 	private static final long serialVersionUID = -5170427302770951584L;
 	
@@ -286,10 +285,10 @@ public class PersonaDTO extends GenericDTO<PersonaDTO> {
 		}		
 		
 		public String getKey() {
-			return val;
+			return labelKey;
 		}
 		public String getValue() {
-			return labelKey;
+			return val;
 		}
 		
 		public String getDescription() {
@@ -335,10 +334,10 @@ public class PersonaDTO extends GenericDTO<PersonaDTO> {
 		}		
 		
 		public String getKey() {
-			return val;
+			return labelKey;
 		}
 		public String getValue() {
-			return labelKey;
+			return val;
 		}
 		
 		public String getDescription() {
@@ -383,10 +382,10 @@ public class PersonaDTO extends GenericDTO<PersonaDTO> {
 		}		
 		
 		public String getKey() {
-			return val;
+			return labelKey;
 		}
 		public String getValue() {
-			return labelKey;
+			return val;
 		}
 		
 		public String getDescription() {
@@ -437,10 +436,10 @@ public class PersonaDTO extends GenericDTO<PersonaDTO> {
 		}		
 		
 		public String getKey() {
-			return val;
+			return labelKey;
 		}
 		public String getValue() {
-			return labelKey;
+			return val;
 		}
 		
 		public String getDescription() {

@@ -1,4 +1,4 @@
-package ec.edu.ug.erp.dao.administracion;
+package ec.edu.ug.erp.servicio.administracion;
 
 import ec.edu.ug.erp.dto.administracion.EmpresaDTO;
 

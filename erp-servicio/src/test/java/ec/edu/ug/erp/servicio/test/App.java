@@ -1,11 +1,11 @@
-package ec.edu.ug.erp.dao;
+package ec.edu.ug.erp.servicio.test;
 
 import java.util.Calendar;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import ec.edu.ug.erp.dao.administracion.AdministracionService;
 import ec.edu.ug.erp.dto.administracion.EmpresaDTO;
+import ec.edu.ug.erp.servicio.administracion.AdministracionService;
 import ec.edu.ug.erp.util.dto.generic.impl.GenericDTO.Estado;
 
 
@@ -15,7 +15,7 @@ public class App {
 				"config/applicationContext.xml");
 		AdministracionService dao = context.getBean("administracionService",AdministracionService.class);
 		EmpresaDTO empresa=new EmpresaDTO();
-		empresa.setCodigo("ITB");
+		empresa.setCodigo("ITB2");
 		empresa.setDescripcion("Intertubep S.A.");
 		empresa.setFechaCreacion(Calendar.getInstance().getTime());
 		empresa.setEstado(Estado.ACTIVO);

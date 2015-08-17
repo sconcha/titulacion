@@ -23,7 +23,7 @@ import ec.edu.ug.erp.util.type.BooleanToCharType;
 
 @Entity
 @Table(name="UADMTEMPRESA_PERSONA")
-public class EmpresaPersonaDTO extends GenericDTO<EmpresaPersonaDTO> {
+public class EmpresaPersonaDTO extends GenericAdministracionDTO<EmpresaPersonaDTO> {
 
 	private static final long serialVersionUID = -1889501347202606778L;
 	

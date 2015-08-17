@@ -19,14 +19,13 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Type;
 
-import ec.edu.ug.erp.util.dto.generic.impl.GenericDTO;
 import ec.edu.ug.erp.util.type.StringValuedEnum;
 import ec.edu.ug.erp.util.type.StringValuedEnumReflect;
 import ec.edu.ug.erp.util.type.StringValuedEnumType;
 
 @Entity
 @Table(name="USEGTMODULO")
-public class ModuloDTO extends GenericDTO<ModuloDTO>{
+public class ModuloDTO extends GenericSeguridadDTO<ModuloDTO>{
 	
 	private static final long serialVersionUID = 9029604394724370809L;
 	
@@ -226,10 +225,10 @@ public class ModuloDTO extends GenericDTO<ModuloDTO>{
 		}		
 		
 		public String getKey() {
-			return val;
+			return labelKey;
 		}
 		public String getValue() {
-			return labelKey;
+			return val;
 		}
 		
 		public String getDescription() {

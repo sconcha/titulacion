@@ -16,12 +16,11 @@ import javax.persistence.Table;
 
 import ec.edu.ug.erp.dto.seguridad.UsuarioAlmacenDTO;
 import ec.edu.ug.erp.dto.seguridad.UsuarioRolDTO;
-import ec.edu.ug.erp.util.dto.generic.impl.GenericDTO;
 
 
 @Entity
 @Table(name="UADMTALMACEN")
-public class AlmacenDTO extends GenericDTO<AlmacenDTO> {
+public class AlmacenDTO extends GenericAdministracionDTO<AlmacenDTO> {
 
 	private static final long serialVersionUID = 9029604394724370809L;
 	

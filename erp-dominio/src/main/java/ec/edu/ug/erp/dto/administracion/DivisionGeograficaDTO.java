@@ -18,7 +18,6 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Type;
 
-import ec.edu.ug.erp.util.dto.generic.impl.GenericDTO;
 import ec.edu.ug.erp.util.type.StringValuedEnum;
 import ec.edu.ug.erp.util.type.StringValuedEnumReflect;
 import ec.edu.ug.erp.util.type.StringValuedEnumType;
@@ -33,7 +32,7 @@ import ec.edu.ug.erp.util.type.StringValuedEnumType;
 
 @Entity
 @Table(name="UADMTDIVISION_GEOGRAFICA")
-public class DivisionGeograficaDTO extends GenericDTO<DivisionGeograficaDTO> {
+public class DivisionGeograficaDTO extends GenericAdministracionDTO<DivisionGeograficaDTO> {
 
 	private static final long serialVersionUID = 9029604394724370809L;
 	
@@ -185,10 +184,10 @@ public class DivisionGeograficaDTO extends GenericDTO<DivisionGeograficaDTO> {
 		}		
 		
 		public String getKey() {
-			return val;
+			return labelKey;
 		}
 		public String getValue() {
-			return labelKey;
+			return val;
 		}
 		
 		public String getDescription() {

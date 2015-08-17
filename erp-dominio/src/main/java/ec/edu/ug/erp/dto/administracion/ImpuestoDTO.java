@@ -18,7 +18,6 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Type;
 
-import ec.edu.ug.erp.util.dto.generic.impl.GenericDTO;
 import ec.edu.ug.erp.util.type.StringValuedEnum;
 import ec.edu.ug.erp.util.type.StringValuedEnumReflect;
 import ec.edu.ug.erp.util.type.StringValuedEnumType;
@@ -26,7 +25,7 @@ import ec.edu.ug.erp.util.type.StringValuedEnumType;
 
 @Entity
 @Table(name="UADMTIMPUESTO")
-public class ImpuestoDTO extends GenericDTO<ImpuestoDTO> {
+public class ImpuestoDTO extends GenericAdministracionDTO<ImpuestoDTO> {
 
 	private static final long serialVersionUID = 9029604394724370809L;
 	
@@ -132,10 +131,10 @@ public class ImpuestoDTO extends GenericDTO<ImpuestoDTO> {
 		}		
 		
 		public String getKey() {
-			return val;
+			return labelKey;
 		}
 		public String getValue() {
-			return labelKey;
+			return val;
 		}
 		
 		public String getDescription() {

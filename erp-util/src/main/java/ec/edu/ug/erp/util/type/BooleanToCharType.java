@@ -17,7 +17,7 @@ public class BooleanToCharType
 
 	private static final long serialVersionUID = 4977136133948551398L;
 
-	public static final String TYPE = "ec.edu.ug.erp.util.type.BooteanToCharType";
+	public static final String TYPE = "ec.edu.ug.erp.util.type.BooleanToCharType";
 
 	private static final String TRUE_STRING = "S";
 

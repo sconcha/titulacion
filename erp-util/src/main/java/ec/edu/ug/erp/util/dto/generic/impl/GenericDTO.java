@@ -122,7 +122,7 @@ public abstract class GenericDTO<DTO extends GenericDTO<DTO>> implements IGeneri
 		;
 
 		public static class Type extends StringValuedEnumType<Estado> {}
-		public static final String TYPE = "ec.edu.ug.erp.util.dto.generic.interfaz.impl.GenericDTO$Estado$Type";
+		public static final String TYPE = "ec.edu.ug.erp.util.dto.generic.impl.GenericDTO$Estado$Type";
 
 		public boolean isActivo() { return this.equals(ACTIVO); }
 		public boolean isInactivo() { return this.equals(INACTIVO); }
@@ -146,10 +146,10 @@ public abstract class GenericDTO<DTO extends GenericDTO<DTO>> implements IGeneri
 		}		
 		
 		public String getKey() {
-			return val;
+			return labelKey;
 		}
 		public String getValue() {
-			return labelKey;
+			return val;
 		}
 		
 		public String getDescription() {

@@ -5,8 +5,11 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
+import org.hibernate.Session;
 import org.hibernate.criterion.DetachedCriteria;
 import org.springframework.data.repository.NoRepositoryBean;
+
+import ec.edu.ug.erp.util.dto.generic.impl.GenericDTO;
 
 /**
  * @author Joel Alvarado
@@ -16,13 +19,13 @@ import org.springframework.data.repository.NoRepositoryBean;
  *
  */
 @NoRepositoryBean
-public interface BaseDao<X extends Serializable, E> {
+public interface BaseDao<X extends GenericDTO<?>, E extends Serializable> {
 
     public <T extends X> void deleteAll(Collection<T> instances) throws Exception;
 
     public <T extends X> int bulkUpdate(String query) throws Exception;
 
-    public <T extends X> T save(T instance) throws Exception;
+    public <T extends X> E save(T instance) throws Exception;
 
     public <T extends X> void saveOrUpdateAll(Collection<T> instances) throws Exception;
 
@@ -49,4 +52,14 @@ public interface BaseDao<X extends Serializable, E> {
     public <T extends X> List<T> findAll(Class<T> clazz) throws Exception;
 
     public <T extends X> T findById(E id,Class<T> clazz) throws Exception;
+    
+    public Session getActiveSession();
+
+    public Object merge(Object entity) throws Exception ;
+    
+	public void evict(Object pEntity);
+
+	public void flush() ;
+
+	public void refresh(Object pEntity) ;
 }

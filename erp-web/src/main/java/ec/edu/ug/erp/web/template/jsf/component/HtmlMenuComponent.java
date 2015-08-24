@@ -17,7 +17,7 @@ import org.primefaces.model.menu.Submenu;
 /**
  * Componente personalizado para generar menu Html5 utilizando el modelo de los menus de Primefaces conbinandolos con estilos de bootstrap 
  * 
- * @author Joel Alvarao
+ * @author Joel Alvarado
  * @since 2015-08-24
  * @category Componente
  * @version 1.0

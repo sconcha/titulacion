@@ -18,7 +18,6 @@ import ec.edu.ug.erp.util.dto.generic.impl.GenericDTO;
  * @see <a href="http://www.genbetadev.com/java-j2ee/spring-framework-el-patron-dao-ii">http://www.genbetadev.com/java-j2ee/spring-framework-el-patron-dao-ii</a>
  *
  */
-@NoRepositoryBean
 public interface BaseDao<X extends GenericDTO<?>, E extends Serializable> {
 
     public <T extends X> void deleteAll(Collection<T> instances) throws Exception;

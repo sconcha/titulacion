@@ -1,6 +1,5 @@
 package ec.edu.ug.erp.servicio.test;
 
-import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -13,6 +12,9 @@ public class App {
 	public static void main(String[] args) throws Exception {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
 				"config/applicationContext.xml");
+
+
+		
 		//AdministracionService service = context.getBean("administracionService",AdministracionService.class);
 		SeguridadService service = context.getBean("seguridadService",SeguridadService.class);
 		

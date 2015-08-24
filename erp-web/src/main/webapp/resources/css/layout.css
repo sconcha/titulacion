@@ -1,0 +1,44 @@
+@CHARSET "ISO-8859-1";
+
+body {
+	margin: 0px !important;
+	padding: 0px !important;
+	font-size: 10px;
+}
+
+.ui-corner-all {
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
+	border-radius: 0px;
+}
+
+ul.ui-menu-child {
+	white-space: nowrap;
+	width: 230px !important;
+}
+
+.template-bagner {
+	margin: 0px;
+	padding: 0px;
+	overflow: hidden;
+	z-index: 1090;
+}
+
+.template-west {
+	margin: 0px;
+	padding: 0px;
+	z-index: 10;
+	border: none;
+	overflow: visible !important;
+}
+
+.template-west .menu {
+	width: 165px;
+}
+
+.template-center {
+	margin: 0px;
+	padding: 0px;
+	border: none;
+	overflow: visible !important;
+}

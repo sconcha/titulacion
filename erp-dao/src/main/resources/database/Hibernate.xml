@@ -46,8 +46,7 @@
 	</bean>
 
 	<bean id="template" class="org.springframework.orm.hibernate4.HibernateTemplate">
-		<property name="sessionFactory" ref="sessionFactory"></property>
-
+		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
 	<bean id="hibernateDaoSupport"
@@ -56,11 +55,6 @@
 		<property name="hibernateTemplate" ref="template" />
 	</bean>
 
-	<bean id="adminDao"
-		class="ec.edu.ug.erp.dao.administracion.impl.AdministracionDaoImpl"
-		>
-		<property name="hibernateTemplate" ref="template" />
-	</bean>
 
 
 	<bean id="transactionInterceptor"

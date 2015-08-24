@@ -1,0 +1,250 @@
+package ec.edu.ug.erp.util.jsf;
+
+import java.security.Principal;
+import java.util.Iterator;
+import java.util.Locale;
+import java.util.Map;
+
+import javax.faces.application.Application;
+import javax.faces.application.FacesMessage;
+import javax.faces.application.FacesMessage.Severity;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+
+public class JSFUtils {
+	
+	public static FacesContext getFacesContext() {
+		return FacesContext.getCurrentInstance();
+	}   
+
+	public static HttpServletRequest getHttpServletRequest() {
+		return (HttpServletRequest) getFacesContext().getExternalContext()
+				.getRequest();
+	}
+	
+	public static HttpServletResponse getHttpServletResponse() {
+		return (HttpServletResponse) getFacesContext().getExternalContext()
+				.getResponse();
+	}
+	
+	public static HttpSession getHttpSession() {
+		return getHttpServletRequest().getSession();
+	}
+	
+	public static String getRealPath(String pRutaRelativa){
+		return getHttpServletRequest().getSession().getServletContext().getRealPath(pRutaRelativa);
+	}
+	
+
+	public static String getContextPath() {
+		return getHttpServletRequest().getContextPath();
+	}
+
+	public static Application getApplication() {
+		return getFacesContext().getApplication();
+	}
+	
+	public static <T> T findManagedBean(String managedBeanName, Class<T> beanClass){
+		return beanClass.cast(getApplication().evaluateExpressionGet(getFacesContext(), "#{"+managedBeanName+"}", beanClass));
+	}
+
+	public static FacesMessage buildMessage(String _sumary, String _detail,
+			FacesMessage.Severity _severity) {
+		FacesMessage l_fm = new FacesMessage();
+		l_fm.setSummary(_sumary);
+		l_fm.setDetail(_detail);
+		l_fm.setSeverity(_severity);
+		return l_fm;
+	}
+
+	public static FacesMessage buildMessageError(String _message, String _detail) {
+		return buildMessage(_message, _detail,
+				FacesMessage.SEVERITY_ERROR);
+	}
+
+	public static FacesMessage buildMessageError(String _message) {
+		return buildMessageError(_message, "");
+	}
+
+	public static FacesMessage buildMessageInfo(String _message,
+			String _detail) {
+		return buildMessage(_message, _detail,
+				FacesMessage.SEVERITY_INFO);
+	}
+
+	public static FacesMessage buildMessageInfo(String _messaje) {
+		return buildMessageInfo(_messaje, "");
+	}
+
+	public static void addMessage(FacesMessage _message, String _clienteId) {
+		getFacesContext().addMessage(_clienteId, _message);
+	}
+
+	public static void addMessage(FacesMessage _menssage) {
+		addMessage(_menssage, null);
+	}
+
+	public static void addMessajeInfo(String _message,
+			String _detail) {
+		addMessage(buildMessageInfo(_message,_detail));
+	}
+
+	public static void addMessageInfo(String pMensajeInformacion) {
+		addMessajeInfo(pMensajeInformacion, "");
+	}
+
+	public static void addMessageInfoComponent(String _clientId,
+			String _message, String _detail) {
+		addMessage(buildMessageInfo(_message, _detail),_clientId);
+	}
+
+	public static void addMessageInfoComponent(String _clientId,
+			String _message) {
+		addMessageInfoComponent(_clientId, _message,"");
+	}
+
+	public static void addMessageError(String _sumary, String _detail) {
+		addMessage(buildMessageInfo(_sumary, _detail));
+	}
+
+	public static void addMessageError(String _sumary) {
+		addMessageError(_sumary, "");
+	}
+
+	public static void addMessageErrorComponent(String _clientId, String _sumary, String _detail) {
+		addMessage(buildMessageError(_sumary, _detail), _clientId);
+	}
+
+	public static void addMessageErrorComponent(String _clientId, String _sumary) {
+		addMessage(buildMessageError(_sumary), _clientId);
+	}
+
+	public static void addMessageError(Throwable _exception) {
+		_exception.printStackTrace();
+		addMessageError(_exception.getMessage());
+		
+	}
+
+	public static void setRequestAttribute(String pAttribute, Object pValor) {
+		getFacesContext().getExternalContext().getRequestMap()
+				.put(pAttribute, pValor);
+	}
+
+	public static void clearRequestAttribute(String pAttribute) {
+		getFacesContext().getExternalContext().getRequestMap()
+				.remove(pAttribute);
+	}
+	
+	public static void removeRequestValue(Object pValue) {
+		removeValueFromMap(pValue,getFacesContext().getExternalContext().getRequestMap());
+	}
+
+	private static void removeValueFromMap(Object pValue,Map<?,?> pMap){
+		Object lClaveEncontrada=null;
+		if(pMap.containsValue(pValue)){
+			for(Object lClave:pMap.keySet()){
+				if(pMap.get(lClave).equals(pValue)){
+					lClaveEncontrada=lClave;
+					break;
+				}
+			}
+			pMap.remove(lClaveEncontrada);
+		}
+	}
+	
+	public static void setSessionAttribute(String pAttribute, Object pValor) {
+		getFacesContext().getExternalContext().getSessionMap()
+				.put(pAttribute, pValor);
+	}
+
+	public static void clearSessionAttribute(String pAttribute) {
+		getFacesContext().getExternalContext().getSessionMap()
+				.remove(pAttribute);
+	}
+	
+	public static void removeSessionValue(Object pValue) {
+		removeValueFromMap(pValue,getFacesContext().getExternalContext().getSessionMap());
+	}
+
+	public static Object getRequestAttribute(String pAttribute) {
+		return getFacesContext().getExternalContext().getRequestMap()
+				.get(pAttribute);
+	}
+
+	public static Object getSessionAttribute(String pAttribute) {
+		return getFacesContext().getExternalContext().getSessionMap()
+				.get(pAttribute);
+	}
+
+	public static String getRequestParameter(String pParameter) {
+		return getFacesContext().getExternalContext().getRequestParameterMap()
+				.get(pParameter);
+	}
+
+	public static String[] getRequestParameters(String pParameter) {
+		return getFacesContext().getExternalContext()
+				.getRequestParameterValuesMap().get(pParameter);
+	}
+
+	public static boolean isAutenticado() {
+		return ((HttpServletRequest) getFacesContext().getExternalContext()
+				.getRequest()).getUserPrincipal() != null;
+	}
+	
+	public static boolean isUserInRole(String pRol) {
+		return ((HttpServletRequest) getFacesContext().getExternalContext()
+				.getRequest()).isUserInRole(pRol);
+	}
+
+	public static Principal getUsuarioAutenticado() {
+		return ((HttpServletRequest) getFacesContext().getExternalContext()
+				.getRequest()).getUserPrincipal();
+	}
+
+	public static String getNombreUsuarioAutenticado() {
+		Principal lPrincipal = getUsuarioAutenticado();
+		String lNombreUsuario = null;
+		if (lPrincipal != null)
+			lNombreUsuario = lPrincipal.getName();
+		return lNombreUsuario;
+	}
+
+	public static Locale getDefaultLocale() {
+		return Locale.getDefault();
+	}
+
+	public static Locale getClientLocale() {
+		return getFacesContext().getViewRoot().getLocale();
+	}
+
+	public static boolean isFacesContexConError() {
+		Severity lSeverity = getFacesContext().getMaximumSeverity();
+		return FacesMessage.SEVERITY_ERROR.equals(lSeverity)
+				|| FacesMessage.SEVERITY_FATAL.equals(lSeverity);
+	}
+	
+	public static void removerFacesMessage(FacesMessage.Severity pSeverity){
+		for(Iterator<FacesMessage>i=getFacesContext().getMessages();i.hasNext();){
+			FacesMessage lFacesMessage=i.next();
+			if(lFacesMessage.getSeverity().equals(pSeverity))
+				i.remove();
+		}
+	}
+	
+	public static void removerFacesMessageInformacion(){
+		removerFacesMessage(FacesMessage.SEVERITY_INFO);
+	}
+	public static void setNombreArchivoDescargar(String pNombreArchivo){
+		getHttpServletResponse().setHeader("Content-Disposition", "inline; filename=\""
+				+ pNombreArchivo + "\"");
+	}
+	public static void setContentType(String pTipoContenido){
+		getHttpServletResponse().setContentType(pTipoContenido);
+	}
+	public static void setContentTypeArchivoTexto(){
+		getHttpServletResponse().setContentType("application/txt");
+	}
+}

@@ -10,7 +10,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.DetachedCriteria;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.NoRepositoryBean;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import ec.edu.ug.erp.util.dao.BaseDao;
@@ -25,6 +27,8 @@ import ec.edu.ug.erp.util.dto.generic.impl.GenericDTO;
  *      href="http://www.genbetadev.com/java-j2ee/spring-framework-el-patron-dao-ii">http://www.genbetadev.com/java-j2ee/spring-framework-el-patron-dao-ii</a>
  *
  */
+@Component
+@NoRepositoryBean
 @Transactional(readOnly=false)
 public abstract class BaseDaoHibernate<X extends GenericDTO<?>, E extends Serializable>
 		extends HibernateDaoSupport implements BaseDao<X, E> {

@@ -69,41 +69,22 @@ public class HtmlMenuComponent extends UIComponentBase {
 		final MenuModel model =(MenuModel) this.getAttributes().get(MODEL_ATTRIBUTE);
 		writer=context.getResponseWriter();
 		
-		writer.startElement		(HTML_DIV		, this);
-		writer.writeAttribute	(HTML_ATTR_ID, ID_VALUE, null);
-		writer.writeAttribute	(HTML_ATTR_CLASS, COL_MENU_CLASS, null);		
-		writer.startElement		(HTML_UL		, this);
-		writer.writeAttribute	(HTML_ATTR_CLASS, MAIN_MENU_CLASS, null);
-
-		
+		//creacion de contenedor de menus
+		writer.startElement(HTML_DIV, this);
+		writer.writeAttribute(HTML_ATTR_ID, ID_VALUE, null);
+		writer.writeAttribute(HTML_ATTR_CLASS, COL_MENU_CLASS, null);
+		writer.startElement(HTML_UL, this);
+		writer.writeAttribute(HTML_ATTR_CLASS, MAIN_MENU_CLASS, null);
+		//creacion de submenus
 		encodeModel(writer,model);
 
+		//se cierra el contenedor de menus
 		writer.endElement(HTML_UL);		
 		writer.endElement(HTML_DIV);
-
 		
-//		
-//		writer.startElement("div", this);
-//		writer.writeAttribute("class", "col-xs-2 col-sm-2", null);		
-//		writer.startElement("ul", this);
-//		writer.writeAttribute("class", "nav main-menu", null);
-//		writer.startElement("li", this);		
-//		writer.startElement("a", this);
-//		writer.writeAttribute("href", "ajax/dashboard.html", null);
-//		writer.writeAttribute("class", "ajax-link", null);
-//		writer.startElement("i", this);
-//		writer.writeAttribute("class", "fa fa-dashboard", null);
-//		writer.endElement("i");		
-//		writer.startElement("span", this);
-//		writer.writeAttribute("class", "hidden-xs", null);
-//		writer.writeText("Dashboard", null);
-//		writer.endElement("span");		
-//		writer.endElement("a");		
-//		writer.endElement("li");		
-//		writer.endElement("ul");		
-//		writer.endElement("div");
-		
+		//se cierra escritura y se completa la respuesta del requerimiento
 		writer.close();
+		context.responseComplete();
 
 
 	}
@@ -117,6 +98,7 @@ public class HtmlMenuComponent extends UIComponentBase {
 	private void encodeElements(ResponseWriter writer, List<MenuElement> elements) throws IOException{
 		for (MenuElement element : elements) {
 			if(element instanceof Submenu){
+				//se construyen los submenus
 				Submenu submenu=(Submenu) element;
 				writer.startElement(HTML_LI, this);		
 				writer.writeAttribute(HTML_ATTR_CLASS, SUBMENU_CLASS, null);
@@ -133,7 +115,8 @@ public class HtmlMenuComponent extends UIComponentBase {
 				writer.endElement(HTML_A);
 				writer.startElement		(HTML_UL		, this);
 				writer.writeAttribute	(HTML_ATTR_CLASS, SUBMENU_CHILD_CLASS, null);
-				if(submenu.getElements()!=null)
+				//creacion de usbmenus de nivel N o menu items
+				if(submenu.getElements()!=null)					
 					encodeElements(writer,(List<MenuElement>)submenu.getElements());
 				writer.endElement(HTML_UL);
 				writer.endElement(HTML_LI);		
@@ -156,6 +139,7 @@ public class HtmlMenuComponent extends UIComponentBase {
 				
 				
 			}else if(element instanceof MenuItem){
+				//se construyen los menu items
 				MenuItem item=(MenuItem)element;
 				writer.startElement(HTML_LI, this);		
 				writer.startElement(HTML_A, this);

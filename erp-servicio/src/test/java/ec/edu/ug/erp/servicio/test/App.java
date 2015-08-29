@@ -11,7 +11,7 @@ import ec.edu.ug.erp.servicio.seguridad.SeguridadService;
 public class App {
 	public static void main(String[] args) throws Exception {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
-				"config/applicationContext.xml");
+				"META-INF/spring/bo/config/appContext.xml");
 
 
 		

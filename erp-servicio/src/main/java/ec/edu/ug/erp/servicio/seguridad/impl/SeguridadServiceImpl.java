@@ -21,10 +21,8 @@ public class SeguridadServiceImpl implements SeguridadService {
 		return modulo;
 	}
 
-	public List<ModuloDTO> loadModuleList() throws Exception {
-		ModuloDTO filter=new ModuloDTO();
-		filter.setTipo(Tipo.MODULO);
-		List<ModuloDTO> modulos=seguridadDao.findByExample(filter);		
+	public List<ModuloDTO> loadModuleList() throws Exception {		
+		List<ModuloDTO> modulos=seguridadDao.obtenerModulosPadre(Tipo.MODULO);		
 		return modulos;
 	}
 

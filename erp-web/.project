@@ -5,6 +5,8 @@
   <projects>
     <project>erp-util</project>
     <project>erp-dominio</project>
+    <project>erp-dao</project>
+    <project>erp-servicio</project>
   </projects>
   <buildSpec>
     <buildCommand>
@@ -21,6 +23,9 @@
     </buildCommand>
     <buildCommand>
       <name>org.eclipse.wst.jsdt.core.javascriptValidator</name>
+    </buildCommand>
+    <buildCommand>
+      <name>org.jboss.tools.ws.jaxrs.metamodelBuilder</name>
     </buildCommand>
     <buildCommand>
       <name>org.eclipse.wst.validation.validationbuilder</name>
@@ -40,5 +45,6 @@
     <nature>org.eclipse.wst.common.modulecore.ModuleCoreNature</nature>
     <nature>org.eclipse.wst.jsdt.core.jsNature</nature>
     <nature>org.hibernate.eclipse.console.hibernateNature</nature>
+    <nature>org.jboss.tools.ws.jaxrs.nature</nature>
   </natures>
 </projectDescription>

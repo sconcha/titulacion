@@ -16,7 +16,8 @@
 	<properties>
 		<maven.test.failure.ignore>true</maven.test.failure.ignore>
 		<spring.framework.version>4.2.0.RELEASE</spring.framework.version>
-		<hibernate.version>4.2.20.Final</hibernate.version>
+		<hibernate.version>5.0.0.Final</hibernate.version>
+		<hibernate.validator.version>5.2.1.Final</hibernate.validator.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -68,7 +69,7 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
-			<version>5.2.1.Final</version>
+			<version>${hibernate.validator.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-lang</groupId>

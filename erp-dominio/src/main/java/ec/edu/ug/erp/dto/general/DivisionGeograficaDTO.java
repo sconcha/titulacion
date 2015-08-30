@@ -1,4 +1,4 @@
-package ec.edu.ug.erp.dto.administracion;
+package ec.edu.ug.erp.dto.general;
 
 import java.util.Arrays;
 import java.util.List;
@@ -18,6 +18,11 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Type;
 
+import ec.edu.ug.erp.dto.administracion.SucursalDTO;
+import ec.edu.ug.erp.util.constantes.ISchemaNames;
+import ec.edu.ug.erp.util.constantes.ISequenceGenerators;
+import ec.edu.ug.erp.util.constantes.ISequenceTables;
+import ec.edu.ug.erp.util.constantes.ITableNames;
 import ec.edu.ug.erp.util.type.StringValuedEnum;
 import ec.edu.ug.erp.util.type.StringValuedEnumReflect;
 import ec.edu.ug.erp.util.type.StringValuedEnumType;
@@ -31,42 +36,42 @@ import ec.edu.ug.erp.util.type.StringValuedEnumType;
  */
 
 @Entity
-@Table(name="UADMTDIVISION_GEOGRAFICA")
-public class DivisionGeograficaDTO extends GenericAdministracionDTO<DivisionGeograficaDTO> {
+@Table(name=ITableNames.DIVISION_GEOGRAFICA,schema=ISchemaNames.GENERAL)
+public class DivisionGeograficaDTO extends GenericGeneralDTO<DivisionGeograficaDTO> {
 
 	private static final long serialVersionUID = 9029604394724370809L;
 	
 	@Id
-	@SequenceGenerator(name = "SG_DIVISION_GEOGRAFICA", sequenceName = "UADMSDIVISION_GEOGRAFICA", allocationSize=1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SG_DIVISION_GEOGRAFICA")
+	@SequenceGenerator(name = ISequenceGenerators.DIVISION_GEOGRAFICA, sequenceName = ISequenceTables.DIVISION_GEOGRAFICA, allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator=ISequenceGenerators.DIVISION_GEOGRAFICA)
 	private Long id;
 
-	@JoinColumn(name="PADRE_ID")
+	@JoinColumn(name=PADRE_ID)
 	@ManyToOne(fetch=FetchType.LAZY)
 	private DivisionGeograficaDTO padre;
 	
-	@JoinColumn(name="MONEDA_ID")
+	@JoinColumn(name=MONEDA_ID)
 	@ManyToOne(fetch=FetchType.LAZY)
 	private MonedaDTO moneda;
 
-	@Column(name="CODIGO",length=10)
+	@Column(name=CODIGO,length=10)
 	private String codigo;
 	
-	@Column(name="TIPO",length=1)
+	@Column(name=TIPO,length=1)
 	@Type(type=Tipo.TYPE)
 	private Tipo tipo;
 	
-	@Column(name="NIVEL")
+	@Column(name=NIVEL)
 	private Integer nivel;
 	
-	@OneToMany(mappedBy="pais",fetch=FetchType.LAZY)
+	@OneToMany(mappedBy=FIELD_PAIS,fetch=FetchType.LAZY)
 	private List<ImpuestoDTO> impuestoDTOs;
 	
-	@OneToMany(mappedBy="padre",fetch=FetchType.LAZY)
+	@OneToMany(mappedBy=FIELD_PADRE,fetch=FetchType.LAZY)
 	private List<DivisionGeograficaDTO> divisionGeograficaDTOs;
 	
-	@OneToMany(mappedBy="ciudad",fetch=FetchType.LAZY)
-	private List<AlmacenDTO> almacenDTOs;
+	@OneToMany(mappedBy=FIELD_CIUDAD,fetch=FetchType.LAZY)
+	private List<SucursalDTO> sucursalDTOs;
 	
 	public Long getId() {		
 		return id;
@@ -137,12 +142,12 @@ public class DivisionGeograficaDTO extends GenericAdministracionDTO<DivisionGeog
 		this.divisionGeograficaDTOs = divisionGeograficaDTOs;
 	}
 
-	public List<AlmacenDTO> getAlmacenDTOs() {
-		return almacenDTOs;
+	public List<SucursalDTO> getSucursalDTOs() {
+		return sucursalDTOs;
 	}
 	
-	public void setAlmacenDTOs(List<AlmacenDTO> almacenDTOs) {
-		this.almacenDTOs = almacenDTOs;
+	public void setSucursalDTOs(List<SucursalDTO> sucursalDTOs) {
+		this.sucursalDTOs = sucursalDTOs;
 	}
 	
 	/**
@@ -158,7 +163,7 @@ public class DivisionGeograficaDTO extends GenericAdministracionDTO<DivisionGeog
 		;
 
 		public static class Type extends StringValuedEnumType<Tipo> {}
-		public static final String TYPE = "ec.edu.ug.erp.dto.administracion.DivisionGeograficaDTO$Tipo$Type";
+		public static final String TYPE = "ec.edu.ug.erp.dto.general.DivisionGeograficaDTO$Tipo$Type";
 
 		public boolean isPais() 	 { return this.equals(PAIS); 		}
 		public boolean isProvincia() { return this.equals(PROVINCIA); 	}

@@ -14,49 +14,55 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import ec.edu.ug.erp.dto.seguridad.UsuarioAlmacenDTO;
+import ec.edu.ug.erp.dto.general.DivisionGeograficaDTO;
+import ec.edu.ug.erp.dto.general.RegionDTO;
+import ec.edu.ug.erp.dto.seguridad.UsuarioSucursalDTO;
 import ec.edu.ug.erp.dto.seguridad.UsuarioRolDTO;
+import ec.edu.ug.erp.util.constantes.ISchemaNames;
+import ec.edu.ug.erp.util.constantes.ISequenceGenerators;
+import ec.edu.ug.erp.util.constantes.ISequenceTables;
+import ec.edu.ug.erp.util.constantes.ITableNames;
 
 
 @Entity
-@Table(name="UADMTALMACEN")
-public class AlmacenDTO extends GenericAdministracionDTO<AlmacenDTO> {
+@Table(name=ITableNames.SUCURSAL,schema=ISchemaNames.ADMINISTRACION)
+public class SucursalDTO extends GenericAdministracionDTO<SucursalDTO> {
 
 	private static final long serialVersionUID = 9029604394724370809L;
 	
 	@Id
-	@SequenceGenerator(name = "SG_ALMACEN", sequenceName = "UADMSALMACEN", allocationSize=1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SG_ALMACEN")
+	@SequenceGenerator(name = ISequenceGenerators.SUCURSAL, sequenceName = ISequenceTables.SUCURSAL, allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator=ISequenceGenerators.SUCURSAL)
 	private Long id;
 
-	@JoinColumn(name="EMPRESA_ID")
+	@JoinColumn(name=EMPRESA_ID)
 	@ManyToOne(fetch=FetchType.LAZY)
 	private EmpresaDTO empresa;
 	
-	@JoinColumn(name="REGION_ID")
+	@JoinColumn(name=REGION_ID)
 	@ManyToOne(fetch=FetchType.LAZY)
 	private RegionDTO region;
 	
-	@JoinColumn(name="CIUDAD_ID")
+	@JoinColumn(name=CIUDAD_ID)
 	@ManyToOne(fetch=FetchType.LAZY)
 	private DivisionGeograficaDTO ciudad;
 	
-	@Column(name="CODIGO",length=10)
+	@Column(name=CODIGO,length=10)
 	private String codigo;
 	
-	@Column(name="DIRECCION",length=200)
+	@Column(name=DIRECCION,length=200)
 	private String direccion;
 	
-	@Column(name="TELEFONO",length=200)
+	@Column(name=TELEFONO,length=200)
 	private String telefono;
 	
-	@Column(name="FAX",length=200)
+	@Column(name=FAX,length=200)
 	private String fax;
 	
-	@OneToMany(mappedBy="almacen",fetch=FetchType.LAZY)
-	private List<UsuarioAlmacenDTO> usuarioAlmacenDTOs;
+	@OneToMany(mappedBy=FIELD_SUCURSAL,fetch=FetchType.LAZY)
+	private List<UsuarioSucursalDTO> usuarioAlmacenDTOs;
 	
-	@OneToMany(mappedBy="almacen",fetch=FetchType.LAZY)
+	@OneToMany(mappedBy=FIELD_SUCURSAL,fetch=FetchType.LAZY)
 	private List<UsuarioRolDTO> usuarioRolDTOs;
 	
 	
@@ -126,11 +132,11 @@ public class AlmacenDTO extends GenericAdministracionDTO<AlmacenDTO> {
 		this.fax = fax;
 	}
 
-	public List<UsuarioAlmacenDTO> getUsuarioAlmacenDTOs() {
+	public List<UsuarioSucursalDTO> getUsuarioAlmacenDTOs() {
 		return usuarioAlmacenDTOs;
 	}
 
-	public void setUsuarioAlmacenDTOs(List<UsuarioAlmacenDTO> usuarioAlmacenDTOs) {
+	public void setUsuarioAlmacenDTOs(List<UsuarioSucursalDTO> usuarioAlmacenDTOs) {
 		this.usuarioAlmacenDTOs = usuarioAlmacenDTOs;
 	}
 

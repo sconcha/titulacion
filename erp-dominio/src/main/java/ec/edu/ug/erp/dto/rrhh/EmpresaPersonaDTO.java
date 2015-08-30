@@ -1,4 +1,4 @@
-package ec.edu.ug.erp.dto.administracion;
+package ec.edu.ug.erp.dto.rrhh;
 
 import java.util.List;
 
@@ -16,46 +16,51 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Type;
 
+import ec.edu.ug.erp.dto.administracion.EmpresaDTO;
 import ec.edu.ug.erp.dto.seguridad.UsuarioDTO;
+import ec.edu.ug.erp.util.constantes.ISchemaNames;
+import ec.edu.ug.erp.util.constantes.ISequenceGenerators;
+import ec.edu.ug.erp.util.constantes.ISequenceTables;
+import ec.edu.ug.erp.util.constantes.ITableNames;
 import ec.edu.ug.erp.util.type.BooleanToCharType;
 
 
 @Entity
-@Table(name="UADMTEMPRESA_PERSONA")
-public class EmpresaPersonaDTO extends GenericAdministracionDTO<EmpresaPersonaDTO> {
+@Table(name=ITableNames.EMPRESA_PERSONA,schema=ISchemaNames.RRHH)
+public class EmpresaPersonaDTO extends GenericRrhhDTO<EmpresaPersonaDTO> {
 
 	private static final long serialVersionUID = -1889501347202606778L;
 	
 	
 	@Id
-	@SequenceGenerator(name = "SG_EMPRESAPERSONA", sequenceName = "UADMSEMPRESA_PERSONA", allocationSize=1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SG_EMPRESAPERSONA")
+	@SequenceGenerator(name = ISequenceGenerators.EMPRESA_PERSONA, sequenceName = ISequenceTables.EMPRESA_PERSONA, allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator=ISequenceGenerators.EMPRESA_PERSONA)
 	private Long id;
 
-	@Column(name="CODIGO")
+	@Column(name=CODIGO)
 	private String codigo;
 	
-	@JoinColumn(name="EMPRESA_ID")
+	@JoinColumn(name=EMPRESA_ID)
 	@ManyToOne(fetch=FetchType.LAZY)
 	private EmpresaDTO empresa;
 	
-	@JoinColumn(name="PERSONA_ID")
+	@JoinColumn(name=PERSONA_ID)
 	@ManyToOne(fetch=FetchType.LAZY)
 	private PersonaDTO persona;
 	
-	@Column(name="ESCLIENTE")
+	@Column(name=ESCLIENTE)
 	@Type(type=BooleanToCharType.TYPE)
 	private boolean cliente;
 	
-	@Column(name="ESPROVEEDOR")
+	@Column(name=ESPROVEEDOR)
 	@Type(type=BooleanToCharType.TYPE)
 	private boolean proveedor;
 	
-	@Column(name="ESEMPLEADO")
+	@Column(name=ESEMPLEADO)
 	@Type(type=BooleanToCharType.TYPE)
 	private boolean empleado;
 	
-	@OneToMany(mappedBy="empresaPersona",fetch=FetchType.LAZY)
+	@OneToMany(mappedBy=FIELD_EMPRESA_PERSONA,fetch=FetchType.LAZY)
 	private List<UsuarioDTO> usuarioDTOs;
 
 	public Long getId() {		

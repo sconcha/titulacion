@@ -19,58 +19,62 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Type;
 
+import ec.edu.ug.erp.util.constantes.ISchemaNames;
+import ec.edu.ug.erp.util.constantes.ISequenceGenerators;
+import ec.edu.ug.erp.util.constantes.ISequenceTables;
+import ec.edu.ug.erp.util.constantes.ITableNames;
 import ec.edu.ug.erp.util.type.StringValuedEnum;
 import ec.edu.ug.erp.util.type.StringValuedEnumReflect;
 import ec.edu.ug.erp.util.type.StringValuedEnumType;
 
 @Entity
-@Table(name="USEGTMODULO")
+@Table(name=ITableNames.MODULO,schema=ISchemaNames.SEGURIDAD)
 public class ModuloDTO extends GenericSeguridadDTO<ModuloDTO>{
 	
 	private static final long serialVersionUID = 9029604394724370809L;
 	
 	@Id
-	@SequenceGenerator(name = "SG_MODULO", sequenceName = "USEGSMODULO", allocationSize=1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SG_MODULO")
+	@SequenceGenerator(name = ISequenceGenerators.MODULO, sequenceName = ISequenceTables.MODULO, allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator=ISequenceGenerators.MODULO)
 	private Long id;
 	
-	@JoinColumn(name="PADRE_ID")
+	@JoinColumn(name=PADRE_ID)
 	@ManyToOne(fetch=FetchType.LAZY)
 	private ModuloDTO padre;
 	
-	@Column(name="CODIGO",length=50)
+	@Column(name=CODIGO,length=50)
 	private String codigo;
 	
-	@Column(name="ACCIONLISTAR",length=300)
+	@Column(name=ACCIONLISTAR,length=300)
 	private String accionListar;
 	
-	@Column(name="ACCIONCREAR",length=300)
+	@Column(name=ACCIONCREAR,length=300)
 	private String accionCrear;
 	
-	@Column(name="ACCIONEDITAR",length=300)
+	@Column(name=ACCIONEDITAR,length=300)
 	private String accionEditar;
 	
-	@Column(name="ICONO",length=50)
+	@Column(name=ICONO,length=50)
 	private String icono;
 	
-	@Column(name="ORDEN")
+	@Column(name=ORDEN)
 	private Integer orden;
 	
-	@Column(name="NIVEL")
+	@Column(name=NIVEL)
 	private Integer nivel;
 	
-	@Column(name="TIPO",length=1)
+	@Column(name=TIPO,length=1)
 	@Type(type=Tipo.TYPE)
 	private Tipo tipo;
 	
-	@Column(name="PARAMETROS")
+	@Column(name=PARAMETROS)
 	@Lob
 	private String parametros;
 	
-	@OneToMany(mappedBy="padre",fetch=FetchType.LAZY)
+	@OneToMany(mappedBy=FIELD_PADRE,fetch=FetchType.LAZY)
 	private List<ModuloDTO> moduloDTOs;
 	
-	@OneToMany(mappedBy="modulo",fetch=FetchType.LAZY)
+	@OneToMany(mappedBy=FIELD_MODULO,fetch=FetchType.LAZY)
 	private List<TareaDTO> tareaDTOs;
 	
 	public Long getId() {		

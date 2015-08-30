@@ -1,4 +1,4 @@
-package ec.edu.ug.erp.dto.administracion;
+package ec.edu.ug.erp.dto.general;
 
 import java.util.List;
 
@@ -14,31 +14,35 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Type;
 
+import ec.edu.ug.erp.util.constantes.ISchemaNames;
+import ec.edu.ug.erp.util.constantes.ISequenceGenerators;
+import ec.edu.ug.erp.util.constantes.ISequenceTables;
+import ec.edu.ug.erp.util.constantes.ITableNames;
 import ec.edu.ug.erp.util.type.BooleanToCharType;
 
 
 @Entity
-@Table(name="UADMTMONEDA")
-public class MonedaDTO extends GenericAdministracionDTO<MonedaDTO> {
+@Table(name=ITableNames.MONEDA,schema=ISchemaNames.GENERAL)
+public class MonedaDTO extends GenericGeneralDTO<MonedaDTO> {
 
 	private static final long serialVersionUID = 9029604394724370809L;
 	
 	@Id
-	@SequenceGenerator(name = "SG_MONEDA", sequenceName = "UADMSMONEDA", allocationSize=1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SG_MONEDA")
+	@SequenceGenerator(name = ISequenceGenerators.MONEDA, sequenceName = ISequenceTables.MONEDA, allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator=ISequenceGenerators.MONEDA)
 	private Long id;
 
-	@Column(name="CODIGO")
+	@Column(name=CODIGO)
 	private String codigo;
 	
-	@Column(name="SIMBOLO")
+	@Column(name=SIMBOLO)
 	private String simbolo;
 	
-	@Column(name="LOCAL")
+	@Column(name=LOCAL)
 	@Type(type=BooleanToCharType.TYPE)
 	private boolean local;
 
-	@OneToMany(mappedBy="moneda",fetch=FetchType.LAZY)
+	@OneToMany(mappedBy=FIELD_MONEDA,fetch=FetchType.LAZY)
 	private List<DivisionGeograficaDTO> divisionGeograficaDTOs;
 	
 	public Long getId() {		

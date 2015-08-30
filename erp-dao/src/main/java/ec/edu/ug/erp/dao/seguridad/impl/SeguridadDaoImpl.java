@@ -19,7 +19,7 @@ import ec.edu.ug.erp.util.dao.impl.GenericDAOImpl;
 public class SeguridadDaoImpl extends GenericDAOImpl<GenericSeguridadDTO<?>> implements SeguridadDao {
 
 	@Transactional(readOnly=true)
-	public List<ModuloDTO> obtenerModulosPadre(Tipo tipo, Objects... filters)
+	public List<ModuloDTO> cargarModulosPorTipo(Tipo tipo, Objects... filters)
 			throws Exception {
 		DetachedCriteria criteria= DetachedCriteria.forClass(ModuloDTO.class,ALIAS_MODULO);
 		criteria.add(Restrictions.eq(FIELD_TIPO, tipo));

@@ -26,14 +26,16 @@
 			<list>
 				<value>ec.edu.ug.erp.util.dto.generic</value>
 				<value>ec.edu.ug.erp.util.dto.generic.impl</value>
+				<value>ec.edu.ug.erp.dto.general</value>				
 				<value>ec.edu.ug.erp.dto.administracion</value>
+				<value>ec.edu.ug.erp.dto.rrhh</value>
 				<value>ec.edu.ug.erp.dto.seguridad</value>
-				<value>ec.edu.ug.erp.dto.general</value>
 				<value>ec.edu.ug.erp.dto.gerencial</value>
 				<value>ec.edu.ug.erp.dto.facturacion</value>
 				<value>ec.edu.ug.erp.dto.inventario</value>
 				<value>ec.edu.ug.erp.dto.compras</value>
 				<value>ec.edu.ug.erp.dto.contabilidad</value>
+				
 			</list>
 		</property>
 

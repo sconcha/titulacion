@@ -251,7 +251,7 @@ a.show-sidebar:hover {
   background: none !important;
 }
 
-.panel-menu .badge .empresa {
+.panel-menu .empresa .badge  {
   background:none;
   border: none;  
 }

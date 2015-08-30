@@ -13,6 +13,6 @@ import ec.edu.ug.erp.util.dao.GenericDAO;
 public interface SeguridadDao extends GenericDAO<GenericSeguridadDTO<?>>{
 
 	
-	public List<ModuloDTO> obtenerModulosPadre(Tipo tipo,Objects...filters) throws Exception;
+	public List<ModuloDTO> cargarModulosPorTipo(Tipo tipo,Objects...filters) throws Exception;
 	
 }

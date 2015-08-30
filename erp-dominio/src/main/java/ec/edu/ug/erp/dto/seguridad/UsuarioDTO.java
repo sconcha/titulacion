@@ -14,31 +14,35 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import ec.edu.ug.erp.dto.administracion.EmpresaPersonaDTO;
+import ec.edu.ug.erp.dto.rrhh.EmpresaPersonaDTO;
+import ec.edu.ug.erp.util.constantes.ISchemaNames;
+import ec.edu.ug.erp.util.constantes.ISequenceGenerators;
+import ec.edu.ug.erp.util.constantes.ISequenceTables;
+import ec.edu.ug.erp.util.constantes.ITableNames;
 
 @Entity
-@Table(name="USEGTUSUARIO")
+@Table(name=ITableNames.USUARIO,schema=ISchemaNames.SEGURIDAD)
 public class UsuarioDTO extends GenericSeguridadDTO<UsuarioDTO>{
 	
 	private static final long serialVersionUID = 9029604394724370809L;
 	
 	@Id
-	@SequenceGenerator(name = "SG_USUARIO", sequenceName = "USEGSUSUARIO", allocationSize=1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SG_USUARIO")
+	@SequenceGenerator(name = ISequenceGenerators.USUARIO, sequenceName = ISequenceTables.USUARIO, allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator=ISequenceGenerators.USUARIO)
 	private Long id;
 	
-	@JoinColumn(name="EMPRESAPERSONA_ID")
+	@JoinColumn(name=EMPRESAPERSONA_ID)
 	@ManyToOne(fetch=FetchType.LAZY)
 	private EmpresaPersonaDTO empresaPersona;
 
-	@Column(name="CODIGO",length=50)
+	@Column(name=CODIGO,length=50)
 	private String codigo;
 	
-	@Column(name="CLAVE",length=100)
+	@Column(name=CLAVE,length=100)
 	private String clave;
 	
 	@OneToMany(mappedBy="usuario",fetch=FetchType.LAZY)
-	private List<UsuarioAlmacenDTO> usuarioAlmacenDTOs;
+	private List<UsuarioSucursalDTO> usuarioAlmacenDTOs;
 	
 	@OneToMany(mappedBy="usuario",fetch=FetchType.LAZY)
 	private List<UsuarioRolDTO> usuarioRolDTOs;
@@ -78,11 +82,11 @@ public class UsuarioDTO extends GenericSeguridadDTO<UsuarioDTO>{
 		this.clave = clave;
 	}
 
-	public List<UsuarioAlmacenDTO> getUsuarioAlmacenDTOs() {
+	public List<UsuarioSucursalDTO> getUsuarioAlmacenDTOs() {
 		return usuarioAlmacenDTOs;
 	}
 
-	public void setUsuarioAlmacenDTOs(List<UsuarioAlmacenDTO> usuarioAlmacenDTOs) {
+	public void setUsuarioAlmacenDTOs(List<UsuarioSucursalDTO> usuarioAlmacenDTOs) {
 		this.usuarioAlmacenDTOs = usuarioAlmacenDTOs;
 	}
 

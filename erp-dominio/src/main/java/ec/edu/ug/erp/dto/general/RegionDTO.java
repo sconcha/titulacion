@@ -1,4 +1,4 @@
-package ec.edu.ug.erp.dto.administracion;
+package ec.edu.ug.erp.dto.general;
 
 import java.util.List;
 
@@ -12,23 +12,29 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import ec.edu.ug.erp.dto.administracion.SucursalDTO;
+import ec.edu.ug.erp.util.constantes.ISchemaNames;
+import ec.edu.ug.erp.util.constantes.ISequenceGenerators;
+import ec.edu.ug.erp.util.constantes.ISequenceTables;
+import ec.edu.ug.erp.util.constantes.ITableNames;
+
 
 @Entity
-@Table(name="UADMTREGION")
-public class RegionDTO extends GenericAdministracionDTO<RegionDTO> {
+@Table(name=ITableNames.REGION,schema=ISchemaNames.GENERAL)
+public class RegionDTO extends GenericGeneralDTO<RegionDTO> {
 
 	private static final long serialVersionUID = 9029604394724370809L;
 	
 	@Id
-	@SequenceGenerator(name = "SG_REGION", sequenceName = "UADMSREGION", allocationSize=1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SG_REGION")
+	@SequenceGenerator(name = ISequenceGenerators.REGION, sequenceName = ISequenceTables.REGION, allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator=ISequenceGenerators.REGION)
 	private Long id;
 
-	@Column(name="CODIGO")
+	@Column(name=CODIGO)
 	private String codigo;
 	
-	@OneToMany(mappedBy="region",fetch=FetchType.LAZY)
-	private List<AlmacenDTO> almacenesRegion;
+	@OneToMany(mappedBy=FIELD_REGION,fetch=FetchType.LAZY)
+	private List<SucursalDTO> almacenesRegion;
 
 	public Long getId() {		
 		return id;

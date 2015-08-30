@@ -22,7 +22,7 @@ public class SeguridadServiceImpl implements SeguridadService {
 	}
 
 	public List<ModuloDTO> loadModuleList() throws Exception {		
-		List<ModuloDTO> modulos=seguridadDao.obtenerModulosPadre(Tipo.MODULO);		
+		List<ModuloDTO> modulos=seguridadDao.cargarModulosPorTipo(Tipo.MODULO);		
 		return modulos;
 	}
 

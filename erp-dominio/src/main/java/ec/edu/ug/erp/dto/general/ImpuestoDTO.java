@@ -1,4 +1,4 @@
-package ec.edu.ug.erp.dto.administracion;
+package ec.edu.ug.erp.dto.general;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
@@ -18,33 +18,37 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Type;
 
+import ec.edu.ug.erp.util.constantes.ISchemaNames;
+import ec.edu.ug.erp.util.constantes.ISequenceGenerators;
+import ec.edu.ug.erp.util.constantes.ISequenceTables;
+import ec.edu.ug.erp.util.constantes.ITableNames;
 import ec.edu.ug.erp.util.type.StringValuedEnum;
 import ec.edu.ug.erp.util.type.StringValuedEnumReflect;
 import ec.edu.ug.erp.util.type.StringValuedEnumType;
 
 
 @Entity
-@Table(name="UADMTIMPUESTO")
-public class ImpuestoDTO extends GenericAdministracionDTO<ImpuestoDTO> {
+@Table(name=ITableNames.IMPUESTO,schema=ISchemaNames.GENERAL)
+public class ImpuestoDTO extends GenericGeneralDTO<ImpuestoDTO> {
 
 	private static final long serialVersionUID = 9029604394724370809L;
 	
 	@Id
-	@SequenceGenerator(name = "SG_IMPUESTO", sequenceName = "UADMSIMPUESTO", allocationSize=1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SG_IMPUESTO")
+	@SequenceGenerator(name = ISequenceGenerators.IMPUESTO, sequenceName = ISequenceTables.IMPUESTO, allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator=ISequenceGenerators.IMPUESTO)
 	private Long id;
 
-	@JoinColumn(name="PAIS_ID")
+	@JoinColumn(name=PAIS_ID)
 	@ManyToOne(fetch=FetchType.LAZY)
 	private DivisionGeograficaDTO pais;
 
-	@Column(name="CODIGO",length=10)
+	@Column(name=CODIGO,length=10)
 	private String codigo;
 	
-	@Column(name="PORCENTAJE")
+	@Column(name=PORCENTAJE)
 	private BigDecimal porcentaje;
 	
-	@Column(name="TIPO",length=1)
+	@Column(name=TIPO,length=1)
 	@Type(type=Tipo.TYPE)
 	private Tipo tipo;
 	
@@ -107,7 +111,7 @@ public class ImpuestoDTO extends GenericAdministracionDTO<ImpuestoDTO> {
 		;
 
 		public static class Type extends StringValuedEnumType<Tipo> {}
-		public static final String TYPE = "ec.edu.ug.erp.dto.administracion.ImpuestoDTO$Tipo$Type";
+		public static final String TYPE = "ec.edu.ug.erp.dto.general.ImpuestoDTO$Tipo$Type";
 
 		public boolean isIva() 	 { return this.equals(IVA); 		}
 		public boolean isIce() 	 { return this.equals(ICE); 	}

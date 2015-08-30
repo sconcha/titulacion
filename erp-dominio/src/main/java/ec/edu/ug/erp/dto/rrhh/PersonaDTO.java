@@ -1,4 +1,4 @@
-package ec.edu.ug.erp.dto.administracion;
+package ec.edu.ug.erp.dto.rrhh;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,76 +20,81 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.Type;
 
+import ec.edu.ug.erp.dto.administracion.EmpresaDTO;
+import ec.edu.ug.erp.util.constantes.ISchemaNames;
+import ec.edu.ug.erp.util.constantes.ISequenceGenerators;
+import ec.edu.ug.erp.util.constantes.ISequenceTables;
+import ec.edu.ug.erp.util.constantes.ITableNames;
 import ec.edu.ug.erp.util.type.StringValuedEnum;
 import ec.edu.ug.erp.util.type.StringValuedEnumReflect;
 import ec.edu.ug.erp.util.type.StringValuedEnumType;
 
 @Entity
-@Table(name="UADMTPERSONA")
-public class PersonaDTO extends GenericAdministracionDTO<PersonaDTO> {
+@Table(name=ITableNames.PERSONA,schema=ISchemaNames.RRHH)
+public class PersonaDTO extends GenericRrhhDTO<PersonaDTO> {
 
 	private static final long serialVersionUID = -5170427302770951584L;
 	
 	@Id
-	@SequenceGenerator(name = "SG_PERSONA", sequenceName = "UADMSPERSONA", allocationSize=1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SG_PERSONA")
+	@SequenceGenerator(name = ISequenceGenerators.PERSONA, sequenceName = ISequenceTables.PERSONA, allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator=ISequenceGenerators.PERSONA)
 	private Long id;
 
-	@Column(name="NATURALEZA",length=1)
+	@Column(name=NATURALEZA,length=1)
 	@Type(type=Naturaleza.TYPE)
 	private Naturaleza naturaleza;
 	
-	@Column(name="TIPOIDENTIFICACION",length=1)
+	@Column(name=TIPOIDENTIFICACION,length=1)
 	@Type(type=TipoIdentificacion.TYPE)
 	private TipoIdentificacion tipoIdentificacion;
 
-	@Column(name="IDENTIFICACION",length=20)	
+	@Column(name=IDENTIFICACION,length=20)	
 	private String identificacion;
 	
-	@Column(name="APELLIDOPATERNO",length=200)
+	@Column(name=APELLIDOPATERNO,length=200)
 	private String apellidopaterno;
 	
-	@Column(name="APELLIDOMATERNO",length=100)
+	@Column(name=APELLIDOMATERNO,length=100)
 	private String apellidomaterno;
 	
-	@Column(name="NOMBRES",length=200)
+	@Column(name=NOMBRES,length=200)
 	private String nombres;
 	
-	@Column(name="RAZONSOCIAL",length=300)
+	@Column(name=RAZONSOCIAL,length=300)
 	private String razonSocial;
 
-	@Column(name="NOMBRECOMERCIAL",length=300)
+	@Column(name=NOMBRECOMERCIAL,length=300)
 	private String nombreComercial;
 
-	@Column(name="GENERO",length=1)
+	@Column(name=GENERO,length=1)
 	@Type(type=Genero.TYPE)
 	private Genero genero;
 	
-	@Column(name="FECHANACIMIENTO")
+	@Column(name=FECHANACIMIENTO)
 	@Temporal(TemporalType.DATE)
 	Date fechaNacimiento;
 	
-	@Column(name="ESTAOCIVIL",length=1)
+	@Column(name=ESTAOCIVIL,length=1)
 	@Type(type=EstadoCivil.TYPE)
 	private EstadoCivil estadoCivil;
 	
-	@Column(name="TIPOSANGRE",length=10)
+	@Column(name=TIPOSANGRE,length=10)
 	private String tipoSangre;
 	
-	@Column(name="TELEFONO",length=200)
+	@Column(name=TELEFONO,length=200)
 	private String telefono;
 	
-	@Column(name="FAX",length=20)
+	@Column(name=FAX,length=20)
 	private String fax;
 	
-	@Column(name="EMAIL",length=200)
+	@Column(name=EMAIL,length=200)
 	private String email;
 	
 	
-	@OneToMany(mappedBy="persona",fetch=FetchType.LAZY)
+	@OneToMany(mappedBy=FIELD_PERSONA,fetch=FetchType.LAZY)
 	private List<EmpresaDTO> empresaDTOs=new ArrayList<EmpresaDTO>();
 	
-	@OneToMany(mappedBy="persona",fetch=FetchType.LAZY)
+	@OneToMany(mappedBy=FIELD_PERSONA,fetch=FetchType.LAZY)
 	private List<EmpresaPersonaDTO> empresaPersonaDTOs=new ArrayList<EmpresaPersonaDTO>();
 	
 	public Long getId() {		
@@ -261,7 +266,7 @@ public class PersonaDTO extends GenericAdministracionDTO<PersonaDTO> {
 		;
 
 		public static class Type extends StringValuedEnumType<Naturaleza> {}
-		public static final String TYPE = "ec.edu.ug.erp.dto.administracion.PersonaDTO$Naturaleza$Type";
+		public static final String TYPE = "ec.edu.ug.erp.dto.rrhh.PersonaDTO$Naturaleza$Type";
 
 		public boolean isNatural() { return this.equals(NATURAL); }
 		public boolean isJuridica() { return this.equals(JURIDICA); }
@@ -309,7 +314,7 @@ public class PersonaDTO extends GenericAdministracionDTO<PersonaDTO> {
 		;
 
 		public static class Type extends StringValuedEnumType<TipoIdentificacion> {}
-		public static final String TYPE = "ec.edu.ug.erp.dto.administracion.PersonaDTO$TipoIdentificacion$Type";
+		public static final String TYPE = "ec.edu.ug.erp.dto.rrhh.PersonaDTO$TipoIdentificacion$Type";
 
 		public boolean isRuc()       { return this.equals(RUC); }
 		public boolean isCedula()    { return this.equals(CEDULA); }
@@ -358,7 +363,7 @@ public class PersonaDTO extends GenericAdministracionDTO<PersonaDTO> {
 		;
 
 		public static class Type extends StringValuedEnumType<Genero> {}
-		public static final String TYPE = "ec.edu.ug.erp.dto.administracion.PersonaDTO$Genero$Type";
+		public static final String TYPE = "ec.edu.ug.erp.dto.rrhh.PersonaDTO$Genero$Type";
 
 		public boolean isMasculino()   { return this.equals(MASCULINO); }
 		public boolean isFemenino()    { return this.equals(FEMENINO); }
@@ -409,7 +414,7 @@ public class PersonaDTO extends GenericAdministracionDTO<PersonaDTO> {
 		;
 
 		public static class Type extends StringValuedEnumType<EstadoCivil> {}
-		public static final String TYPE = "ec.edu.ug.erp.dto.administracion.PersonaDTO$EstadoCivil$Type";
+		public static final String TYPE = "ec.edu.ug.erp.dto.rrhh.PersonaDTO$EstadoCivil$Type";
 
 		public boolean isSoltero()   	{ return this.equals(SOLTERO); }
 		public boolean isCasado()    	{ return this.equals(CASADO); }

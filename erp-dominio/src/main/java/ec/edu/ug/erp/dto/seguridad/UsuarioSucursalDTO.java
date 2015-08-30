@@ -13,29 +13,33 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Type;
 
-import ec.edu.ug.erp.dto.administracion.AlmacenDTO;
+import ec.edu.ug.erp.dto.administracion.SucursalDTO;
+import ec.edu.ug.erp.util.constantes.ISchemaNames;
+import ec.edu.ug.erp.util.constantes.ISequenceGenerators;
+import ec.edu.ug.erp.util.constantes.ISequenceTables;
+import ec.edu.ug.erp.util.constantes.ITableNames;
 import ec.edu.ug.erp.util.type.BooleanToCharType;
 
 @Entity
-@Table(name="USEGTUSUARIO_ALMACEN")
-public class UsuarioAlmacenDTO extends GenericSeguridadDTO<UsuarioAlmacenDTO>{
+@Table(name=ITableNames.USUARIO_SUCURSAL,schema=ISchemaNames.SEGURIDAD)
+public class UsuarioSucursalDTO extends GenericSeguridadDTO<UsuarioSucursalDTO>{
 	
 	private static final long serialVersionUID = 9029604394724370809L;
 	
 	@Id
-	@SequenceGenerator(name = "SG_USUARIO_ALMACEN", sequenceName = "USEGSUSUARIO_ALMACEN", allocationSize=1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SG_USUARIO_ALMACEN")
+	@SequenceGenerator(name = ISequenceGenerators.USUARIO_SUCURSAL, sequenceName = ISequenceTables.USUARIO_SUCURSAL, allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator=ISequenceGenerators.USUARIO_SUCURSAL)
 	private Long id;
 	
-	@JoinColumn(name="USUARIO_ID")
+	@JoinColumn(name=USUARIO_ID)
 	@ManyToOne(fetch=FetchType.LAZY)
 	private UsuarioDTO usuario;
 
-	@JoinColumn(name="ALMACEN_ID")
+	@JoinColumn(name=SUCURSAL_ID)
 	@ManyToOne(fetch=FetchType.LAZY)
-	private AlmacenDTO almacen;
+	private SucursalDTO sucursal;
 	
-	@Column(name="PREDETERMINADO",length=1)
+	@Column(name=PREDETERMINADO,length=1)
 	@Type(type=BooleanToCharType.TYPE)
 	private boolean predeterminado;
 
@@ -66,12 +70,12 @@ public class UsuarioAlmacenDTO extends GenericSeguridadDTO<UsuarioAlmacenDTO>{
 		this.usuario = usuario;
 	}
 
-	public AlmacenDTO getAlmacen() {
-		return almacen;
+	public SucursalDTO getSucursal() {
+		return sucursal;
 	}
-
-	public void setAlmacen(AlmacenDTO almacen) {
-		this.almacen = almacen;
+	
+	public void setSucursal(SucursalDTO sucursal) {
+		this.sucursal = sucursal;
 	}
 
 	public boolean isPredeterminado() {

@@ -74,7 +74,7 @@ public class PersonaDTO extends GenericRrhhDTO<PersonaDTO> {
 	@Temporal(TemporalType.DATE)
 	Date fechaNacimiento;
 	
-	@Column(name=ESTAOCIVIL,length=1)
+	@Column(name=ESTADOCIVIL,length=1)
 	@Type(type=EstadoCivil.TYPE)
 	private EstadoCivil estadoCivil;
 	

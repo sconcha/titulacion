@@ -18,7 +18,7 @@ public interface ITableFieldNames {
 	public static final String NOMBRECOMERCIAL="NOMBRECOMERCIAL";
 	public static final String GENERO="GENERO";
 	public static final String FECHANACIMIENTO="FECHANACIMIENTO";
-	public static final String ESTAOCIVIL="ESTAOCIVIL";
+	public static final String ESTADOCIVIL="ESTADOCIVIL";
 	public static final String TIPOSANGRE="TIPOSANGRE";
 	public static final String TELEFONO="TELEFONO";
 	public static final String FAX="FAX";

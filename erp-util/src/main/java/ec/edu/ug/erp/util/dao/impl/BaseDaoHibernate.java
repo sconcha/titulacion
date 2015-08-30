@@ -181,6 +181,13 @@ public abstract class BaseDaoHibernate<X extends GenericDTO<?>, E extends Serial
 
 	}
 	
+	public <T extends X> T findFirstByExample(final T instance) throws Exception {
+		List<T> results=findByExample(instance);
+		return (results!=null&&results.size()>0)?results.iterator().next():null;
+	}
+	
+	
+	
     public Session getActiveSession() {
         return currentSession();
     }

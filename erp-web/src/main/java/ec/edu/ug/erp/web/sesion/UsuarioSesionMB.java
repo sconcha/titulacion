@@ -41,7 +41,7 @@ public class UsuarioSesionMB extends GenericManagedBean {
 	public void init(){
 		System.out.println("INICIANDO USUARIO SESION");
 		
-		
+		load();
 		
 		
 	}

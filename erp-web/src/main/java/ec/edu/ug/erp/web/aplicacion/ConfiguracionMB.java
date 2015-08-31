@@ -5,12 +5,12 @@ import javax.annotation.PreDestroy;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
 
-import ec.edu.ug.erp.util.jsf.GenericManagedBean;
+import ec.edu.ug.erp.web.template.TemplateMB;
 
 
 @Named("configMB")
 @ApplicationScoped
-public class ConfiguracionMB extends GenericManagedBean {
+public class ConfiguracionMB extends TemplateMB {
 
 	private static final long serialVersionUID = -6316545902371086618L;
 	

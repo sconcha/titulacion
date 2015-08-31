@@ -6,7 +6,6 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
-import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.primefaces.model.menu.DefaultMenuItem;
@@ -16,20 +15,14 @@ import org.primefaces.model.menu.MenuElement;
 import org.primefaces.model.menu.MenuModel;
 
 import ec.edu.ug.erp.dto.seguridad.ModuloDTO;
-import ec.edu.ug.erp.servicio.seguridad.SeguridadService;
-import ec.edu.ug.erp.web.sesion.UsuarioSesionMB;
 
 @Named("menuMB")
 @SessionScoped
-public class MenuMB implements Serializable {
+public class MenuMB extends TemplateMB implements Serializable {
 
 	private static final long serialVersionUID = -3106346111915127266L;
 	
-	 @Inject
-	 private SeguridadService seguridadService;
 	 
-	 @Inject
-	 private UsuarioSesionMB usuarioSesion;
 
 	
 	@PostConstruct
@@ -48,7 +41,7 @@ public class MenuMB implements Serializable {
 
 		List<ModuloDTO> modulos = new ArrayList<ModuloDTO>();
 		try {			
-			modulos =seguridadService.loadMenu(usuarioSesion.getUsuarioSucursal());
+			modulos =seguridad.loadMenu(usuarioSesion.getUsuarioSucursal());
 			
 			for (ModuloDTO modulo : modulos) {
 				DefaultSubMenu submenu = new DefaultSubMenu();

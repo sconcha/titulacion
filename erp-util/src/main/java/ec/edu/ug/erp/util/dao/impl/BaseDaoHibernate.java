@@ -171,6 +171,16 @@ public abstract class BaseDaoHibernate<X extends GenericDTO<?>, E extends Serial
 			throw e;
 		}
 	}
+	
+	public <T extends X> T findFirstByCriteria(final DetachedCriteria criteria)
+			throws Exception {
+		try {
+			List<T> results=findByCriteria(criteria);
+			return (results!=null&&results.size()>0)?results.iterator().next():null;
+		} catch (final Exception e) {
+			throw e;
+		}
+	}
 
 	public <T extends X> List<T> findAll(Class<T> clazz) throws Exception {
 		return getHibernateTemplate().loadAll(clazz);

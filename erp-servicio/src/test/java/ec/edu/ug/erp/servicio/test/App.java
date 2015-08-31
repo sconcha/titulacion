@@ -329,7 +329,7 @@ public class App {
 		service.saveModulo(modulo);
 		
 		
-		List<ModuloDTO> modulos=service.loadModuleList();
+		List<ModuloDTO> modulos=service.loadMenu();
 		modulos.forEach(m-> System.out.println(m));
 		
 

@@ -41,10 +41,10 @@ public class UsuarioDTO extends GenericSeguridadDTO<UsuarioDTO>{
 	@Column(name=CLAVE,length=100)
 	private String clave;
 	
-	@OneToMany(mappedBy="usuario",fetch=FetchType.LAZY)
+	@OneToMany(mappedBy=FIELD_USUARIO,fetch=FetchType.LAZY)
 	private List<UsuarioSucursalDTO> usuarioAlmacenDTOs;
 	
-	@OneToMany(mappedBy="usuario",fetch=FetchType.LAZY)
+	@OneToMany(mappedBy=FIELD_USUARIO,fetch=FetchType.LAZY)
 	private List<UsuarioRolDTO> usuarioRolDTOs;
 	
 	
@@ -97,9 +97,5 @@ public class UsuarioDTO extends GenericSeguridadDTO<UsuarioDTO>{
 	public void setUsuarioRolDTOs(List<UsuarioRolDTO> usuarioRolDTOs) {
 		this.usuarioRolDTOs = usuarioRolDTOs;
 	}
-	
-	
-	
-
 
 }

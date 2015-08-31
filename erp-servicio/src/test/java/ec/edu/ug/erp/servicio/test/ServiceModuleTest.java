@@ -25,7 +25,7 @@ public class ServiceModuleTest {
 //	@Test
 	public void testLoadModules() throws Exception {
 		
-		List<ModuloDTO> modulos= seguridad.loadModuleList();
+		List<ModuloDTO> modulos= seguridad.loadMenu();
 		
 		modulos.forEach(modulo->System.out.println(modulo));
 		

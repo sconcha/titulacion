@@ -1,8 +1,8 @@
 package ec.edu.ug.erp.dao.seguridad;
 
 import java.util.List;
-import java.util.Objects;
 
+import ec.edu.ug.erp.dto.administracion.EmpresaDTO;
 import ec.edu.ug.erp.dto.seguridad.GenericSeguridadDTO;
 import ec.edu.ug.erp.dto.seguridad.ModuloDTO;
 import ec.edu.ug.erp.dto.seguridad.ModuloDTO.Tipo;
@@ -22,7 +22,10 @@ import ec.edu.ug.erp.util.dao.GenericDAO;
 public interface SeguridadDao extends GenericDAO<GenericSeguridadDTO<?>>{
 
 	
-	public List<ModuloDTO>    cargarModulosPorTipo(Tipo tipo,Objects...filters) throws Exception;	
+	public List<ModuloDTO> loadMenu(Tipo tipo,Object...filters) throws Exception;	
+	public UsuarioDTO obtenerUsuarioSesion(UsuarioDTO usuario,EmpresaDTO empresa) throws Exception;
+	public List<ModuloDTO> obtenerOpcionesPermitidas(UsuarioSucursalDTO usuarioAutenticado) throws Exception;
+	public List<UsuarioSucursalDTO> obtenerUsuariosSucursal(UsuarioDTO usuario) throws Exception;
 	public UsuarioSucursalDTO obtenerUsuarioSucursal(UsuarioDTO usuario) throws Exception;
 	
 }

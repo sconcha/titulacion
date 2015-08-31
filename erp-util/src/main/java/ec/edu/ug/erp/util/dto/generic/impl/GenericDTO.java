@@ -6,7 +6,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import javax.naming.directory.ModificationItem;
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
@@ -17,8 +16,6 @@ import org.hibernate.annotations.Type;
 
 import ec.edu.ug.erp.util.constantes.IConstantes;
 import ec.edu.ug.erp.util.constantes.ITableFieldNames;
-import ec.edu.ug.erp.util.constantes.ISequenceTables;
-import ec.edu.ug.erp.util.constantes.ITableNames;
 import ec.edu.ug.erp.util.dto.generic.IGenericDTO;
 import ec.edu.ug.erp.util.type.StringValuedEnum;
 import ec.edu.ug.erp.util.type.StringValuedEnumReflect;

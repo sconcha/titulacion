@@ -52,6 +52,8 @@ public class HtmlMenuComponent extends UIComponentBase {
 	public static final String HREF_NONE="#";
 	public static final String STRING_EMPTY="";
 	public static final String ID_VALUE="sidebar-left";
+	public static final String DEFAULT_SUBMENU_ICON="fa fa-angle-down";
+	public static final String DEFAULT_MENUITEM_ICON="fa fa-angle-right";
 	
 	
 	
@@ -106,7 +108,7 @@ public class HtmlMenuComponent extends UIComponentBase {
 				writer.writeAttribute(HTML_ATTR_CLASS, SUBMENU_TOGGLE_CLASS, null);
 				writer.writeAttribute(HTML_ATTR_HREF, HREF_NONE, null);
 				writer.startElement(HTML_I, this);
-				writer.writeAttribute(HTML_ATTR_CLASS, submenu.getIcon()!=null?submenu.getIcon():STRING_EMPTY, null);
+				writer.writeAttribute(HTML_ATTR_CLASS, submenu.getIcon()!=null?submenu.getIcon():DEFAULT_SUBMENU_ICON, null);
 				writer.endElement(HTML_I);		
 				writer.startElement(HTML_SPAN, this);
 				writer.writeAttribute(HTML_ATTR_CLASS, SUBMENU_LABEL_CLASS, null);
@@ -151,7 +153,7 @@ public class HtmlMenuComponent extends UIComponentBase {
 				writer.startElement(HTML_SPAN, this);
 				if(item.getIcon()!=null)
 					writer.writeAttribute(HTML_ATTR_CLASS,SUBMENU_LABEL_CLASS, null);
-				writer.writeText(item.getValue()!=null?item.getValue():STRING_EMPTY, null);
+				writer.writeText(item.getValue()!=null?item.getValue():DEFAULT_MENUITEM_ICON, null);
 				writer.endElement(HTML_SPAN);		
 				writer.endElement(HTML_A);		
 				writer.endElement(HTML_LI);

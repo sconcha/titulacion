@@ -149,14 +149,14 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="var" path="M2_REPO/jdom/jdom/1.0/jdom-1.0.jar" sourcepath="M2_REPO/jdom/jdom/1.0/jdom-1.0-sources.jar"/>
-	<classpathentry kind="var" path="M2_REPO/com/sun/faces/jsf-api/2.2.12/jsf-api-2.2.12.jar" sourcepath="M2_REPO/com/sun/faces/jsf-api/2.2.12/jsf-api-2.2.12-sources.jar">
+	<classpathentry kind="var" path="M2_REPO/com/sun/faces/jsf-api/2.2.2/jsf-api-2.2.2.jar" sourcepath="M2_REPO/com/sun/faces/jsf-api/2.2.2/jsf-api-2.2.2-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/E:/repositoriosLibrerias/repositorio_local/com/sun/faces/jsf-api/2.2.12/jsf-api-2.2.12-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/E:/repositoriosLibrerias/repositorio_local/com/sun/faces/jsf-api/2.2.2/jsf-api-2.2.2-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/com/sun/faces/jsf-impl/2.2.12/jsf-impl-2.2.12.jar" sourcepath="M2_REPO/com/sun/faces/jsf-impl/2.2.12/jsf-impl-2.2.12-sources.jar">
+	<classpathentry kind="var" path="M2_REPO/com/sun/faces/jsf-impl/2.2.2/jsf-impl-2.2.2.jar" sourcepath="M2_REPO/com/sun/faces/jsf-impl/2.2.2/jsf-impl-2.2.2-sources.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/E:/repositoriosLibrerias/repositorio_local/com/sun/faces/jsf-impl/2.2.12/jsf-impl-2.2.12-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:file:/E:/repositoriosLibrerias/repositorio_local/com/sun/faces/jsf-impl/2.2.2/jsf-impl-2.2.2-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="var" path="M2_REPO/org/apache/tomcat/tomcat-servlet-api/7.0.30/tomcat-servlet-api-7.0.30.jar" sourcepath="M2_REPO/org/apache/tomcat/tomcat-servlet-api/7.0.30/tomcat-servlet-api-7.0.30-sources.jar"/>
@@ -200,6 +200,11 @@
 	<classpathentry kind="var" path="M2_REPO/org/primefaces/themes/all-themes/1.0.10/all-themes-1.0.10.jar"/>
 	<classpathentry kind="var" path="M2_REPO/junit/junit/4.7/junit-4.7.jar" sourcepath="M2_REPO/junit/junit/4.7/junit-4.7-sources.jar"/>
 	<classpathentry kind="src" path="/erp-util"/>
+	<classpathentry kind="var" path="M2_REPO/org/springframework/spring-context-support/4.2.0.RELEASE/spring-context-support-4.2.0.RELEASE.jar" sourcepath="M2_REPO/org/springframework/spring-context-support/4.2.0.RELEASE/spring-context-support-4.2.0.RELEASE-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/E:/repositoriosLibrerias/repositorio_local/org/springframework/spring-context-support/4.2.0.RELEASE/spring-context-support-4.2.0.RELEASE-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="var" path="M2_REPO/org/springframework/spring-orm/4.2.0.RELEASE/spring-orm-4.2.0.RELEASE.jar" sourcepath="M2_REPO/org/springframework/spring-orm/4.2.0.RELEASE/spring-orm-4.2.0.RELEASE-sources.jar">
 		<attributes>
 			<attribute name="javadoc_location" value="jar:file:/E:/repositoriosLibrerias/repositorio_local/org/springframework/spring-orm/4.2.0.RELEASE/spring-orm-4.2.0.RELEASE-javadoc.jar!/"/>
@@ -317,6 +322,16 @@
 	<classpathentry kind="var" path="M2_REPO/org/postgresql/postgresql/9.4-1201-jdbc41/postgresql-9.4-1201-jdbc41.jar" sourcepath="M2_REPO/org/postgresql/postgresql/9.4-1201-jdbc41/postgresql-9.4-1201-jdbc41-sources.jar">
 		<attributes>
 			<attribute name="javadoc_location" value="jar:file:/E:/repositoriosLibrerias/repositorio_local/org/postgresql/postgresql/9.4-1201-jdbc41/postgresql-9.4-1201-jdbc41-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="var" path="M2_REPO/ch/qos/logback/logback-classic/1.0.13/logback-classic-1.0.13.jar" sourcepath="M2_REPO/ch/qos/logback/logback-classic/1.0.13/logback-classic-1.0.13-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/E:/repositoriosLibrerias/repositorio_local/ch/qos/logback/logback-classic/1.0.13/logback-classic-1.0.13-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="var" path="M2_REPO/ch/qos/logback/logback-core/1.0.13/logback-core-1.0.13.jar" sourcepath="M2_REPO/ch/qos/logback/logback-core/1.0.13/logback-core-1.0.13-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/E:/repositoriosLibrerias/repositorio_local/ch/qos/logback/logback-core/1.0.13/logback-core-1.0.13-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="/erp-dominio"/>

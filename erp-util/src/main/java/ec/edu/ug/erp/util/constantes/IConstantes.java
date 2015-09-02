@@ -50,6 +50,16 @@ public interface IConstantes {
 	public static final String FIELD_ID="id";
 	public static final String FIELD_USUARIOS_ROLES_FETCH="usuarioRolDTOs";
 	
+	/*
+	 *SECURITY CONFIG 
+	 */
+	public static final String URL_LOGIN="/login";
+	public static final String URL_LOGIN_ERROR="/login?error";
+	public static final String URL_LOGOUT="/logout";
+	public static final String URL_ACCESDENIED="/403";	
+	public static final String PARAM_USERNAME="username";
+	public static final String PARAM_PASSWORD="password";
+	
 	
 	
 }

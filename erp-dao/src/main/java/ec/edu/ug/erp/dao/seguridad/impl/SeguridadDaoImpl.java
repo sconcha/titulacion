@@ -168,8 +168,20 @@ public class SeguridadDaoImpl extends GenericDAOImpl<GenericSeguridadDTO<?>> imp
 		return findFirstByCriteria(criteria);
 	}
 	
-	
-	
+	@Transactional(readOnly=true)
+	public UsuarioDTO findByUserName(String username) throws Exception{		
+		DetachedCriteria criteria=DetachedCriteria.forClass(UsuarioDTO.class,ALIAS_USUARIO);
+		criteria.add(Restrictions.eq(FIELD_CODIGO, username));
+		UsuarioDTO  usuario=findFirstByCriteria(criteria);
+		List<UsuarioRolDTO> usuariosRol=new ArrayList<UsuarioRolDTO>();		
+		criteria=DetachedCriteria.forClass(UsuarioRolDTO.class, ALIAS_USUARIOROL);
+		DAOUtils.addInnerJoins(criteria, FIELD_ROL,FIELD_USUARIO);
+		criteria.add(Restrictions.eq(FIELD_USUARIO, usuario));
+		criteria.add(Restrictions.eq(FIELD_ESTADO, GenericDTO.Estado.ACTIVO));
+		usuariosRol=findByCriteria(criteria);		
+		usuario.setUsuarioRolDTOs(usuariosRol);		
+		return usuario;
+	}
 	
 	
 	

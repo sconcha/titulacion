@@ -27,5 +27,6 @@ public interface SeguridadDao extends GenericDAO<GenericSeguridadDTO<?>>{
 	public List<ModuloDTO> obtenerOpcionesPermitidas(UsuarioSucursalDTO usuarioAutenticado) throws Exception;
 	public List<UsuarioSucursalDTO> obtenerUsuariosSucursal(UsuarioDTO usuario) throws Exception;
 	public UsuarioSucursalDTO obtenerUsuarioSucursal(UsuarioDTO usuario) throws Exception;
+	public UsuarioDTO findByUserName(String username) throws Exception;
 	
 }

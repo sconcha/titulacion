@@ -16,6 +16,7 @@
 	<properties>
 		<maven.test.failure.ignore>true</maven.test.failure.ignore>
 		<spring.framework.version>4.2.0.RELEASE</spring.framework.version>
+		<org.springframework.security-version>3.2.0.RELEASE</org.springframework.security-version>
 		<hibernate.version>5.0.0.Final</hibernate.version>
 		<hibernate.validator.version>5.2.1.Final</hibernate.validator.version>
 		<junit.version>4.11</junit.version>
@@ -62,6 +63,12 @@
 			<artifactId>spring-data-rest-webmvc</artifactId>
 			<version>2.3.2.RELEASE</version>
 		</dependency>
+		<!-- Spring Security-->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${org.springframework.security-version}</version>
+		</dependency>		
 		<!-- Fin Spring Data -->
 		<dependency>
 			<groupId>log4j</groupId>

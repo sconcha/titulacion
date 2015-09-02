@@ -48,7 +48,7 @@ public interface IConstantes {
 	public static final String FIELD_CLAVE="clave";
 	public static final String FIELD_ESTADO="estado";
 	public static final String FIELD_ID="id";
-	
+	public static final String FIELD_USUARIOS_ROLES_FETCH="usuarioRolDTOs";
 	
 	
 	

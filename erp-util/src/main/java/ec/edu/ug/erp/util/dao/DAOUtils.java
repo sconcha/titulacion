@@ -1,7 +1,11 @@
 package ec.edu.ug.erp.util.dao;
 
 
+import java.lang.reflect.Field;
+
 import org.hibernate.FetchMode;
+import org.hibernate.Hibernate;
+import org.hibernate.annotations.LazyCollection;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.sql.JoinType;
 
@@ -44,5 +48,29 @@ public class DAOUtils {
 		}
 		return criteria;
 	}
+	
+	
+	/**
+	 * @author Joel Alvarado
+	 * @param clazz
+	 * @param instance
+	 * @see http://stackoverflow.com/questions/24327353/initialize-all-lazy-loaded-collections-in-hibernate
+	 */
+	public static <T> void forceLoadLazyCollections(Class<T> clazz, T instance) {
+        if (instance == null) {
+            return;
+        }
+        for (Field field : clazz.getDeclaredFields()) {
+            LazyCollection annotation = field.getAnnotation(LazyCollection.class);
+            if (annotation != null) {
+                try {
+                    field.setAccessible(true);
+                    Hibernate.initialize(field.get(instance));
+                } catch (IllegalAccessException e) {
+                    System.err.println("No se puede forzar la carga del la colleccion: " + field.getName());
+                }
+            }
+        }
+    }
 	
 }

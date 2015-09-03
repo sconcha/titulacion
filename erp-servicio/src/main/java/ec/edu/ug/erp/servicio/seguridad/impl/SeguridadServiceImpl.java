@@ -1,5 +1,6 @@
 package ec.edu.ug.erp.servicio.seguridad.impl;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import ec.edu.ug.erp.dao.seguridad.SeguridadDao;
 import ec.edu.ug.erp.dto.administracion.EmpresaDTO;
 import ec.edu.ug.erp.dto.seguridad.ModuloDTO;
 import ec.edu.ug.erp.dto.seguridad.ModuloDTO.Tipo;
+import ec.edu.ug.erp.dto.seguridad.RolDTO;
 import ec.edu.ug.erp.dto.seguridad.UsuarioDTO;
 import ec.edu.ug.erp.dto.seguridad.UsuarioSucursalDTO;
 import ec.edu.ug.erp.servicio.seguridad.SeguridadService;
@@ -53,6 +55,10 @@ public class SeguridadServiceImpl implements SeguridadService {
 	
 	public List<ModuloDTO> obtenerOpcionesPermitidas(UsuarioSucursalDTO usuarioAutenticado) throws Exception {
 		return seguridadDao.obtenerOpcionesPermitidas(usuarioAutenticado);
+	}
+
+	public Collection<RolDTO> findRolesByUrl(String url) throws Exception{		
+		return seguridadDao.findRolesByUrl(url);
 	}
 
 }

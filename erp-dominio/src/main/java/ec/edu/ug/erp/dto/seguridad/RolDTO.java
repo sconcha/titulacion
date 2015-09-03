@@ -12,6 +12,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.springframework.security.access.ConfigAttribute;
+import org.springframework.security.core.GrantedAuthority;
+
 import ec.edu.ug.erp.util.constantes.ISchemaNames;
 import ec.edu.ug.erp.util.constantes.ISequenceGenerators;
 import ec.edu.ug.erp.util.constantes.ISequenceTables;
@@ -19,7 +22,7 @@ import ec.edu.ug.erp.util.constantes.ITableNames;
 
 @Entity
 @Table(name=ITableNames.ROL,schema=ISchemaNames.SEGURIDAD)
-public class RolDTO extends GenericSeguridadDTO<RolDTO>{
+public class RolDTO extends GenericSeguridadDTO<RolDTO> implements GrantedAuthority,ConfigAttribute {
 	
 	private static final long serialVersionUID = 9029604394724370809L;
 	
@@ -69,6 +72,16 @@ public class RolDTO extends GenericSeguridadDTO<RolDTO>{
 
 	public void setTareaRolDTOs(List<TareaRolDTO> tareaRolDTOs) {
 		this.tareaRolDTOs = tareaRolDTOs;
+	}
+
+	@Override
+	public String getAuthority() {
+		return getCodigo();
+	}
+
+	@Override
+	public String getAttribute() {
+		return getCodigo();
 	}
 
 	

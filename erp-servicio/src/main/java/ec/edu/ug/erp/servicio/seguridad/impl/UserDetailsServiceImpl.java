@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -62,9 +61,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	 */
 	private List<GrantedAuthority> usuarioRolDTOToGrantedAutority(List<UsuarioRolDTO> userRoles) {
 		List<GrantedAuthority> result = new ArrayList<GrantedAuthority>();
-		for (UsuarioRolDTO userRole : userRoles) {
-			result.add(new SimpleGrantedAuthority(userRole.getRol().getCodigo()));
-		}
+		userRoles.forEach((userRole)->(result.add(userRole.getRol())));
 		return result;
 	}
 

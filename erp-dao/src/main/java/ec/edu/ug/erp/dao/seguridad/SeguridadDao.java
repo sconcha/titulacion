@@ -1,10 +1,12 @@
 package ec.edu.ug.erp.dao.seguridad;
 
+import java.util.Collection;
 import java.util.List;
 
 import ec.edu.ug.erp.dto.administracion.EmpresaDTO;
 import ec.edu.ug.erp.dto.seguridad.GenericSeguridadDTO;
 import ec.edu.ug.erp.dto.seguridad.ModuloDTO;
+import ec.edu.ug.erp.dto.seguridad.RolDTO;
 import ec.edu.ug.erp.dto.seguridad.ModuloDTO.Tipo;
 import ec.edu.ug.erp.dto.seguridad.UsuarioDTO;
 import ec.edu.ug.erp.dto.seguridad.UsuarioSucursalDTO;
@@ -28,5 +30,5 @@ public interface SeguridadDao extends GenericDAO<GenericSeguridadDTO<?>>{
 	public List<UsuarioSucursalDTO> obtenerUsuariosSucursal(UsuarioDTO usuario) throws Exception;
 	public UsuarioSucursalDTO obtenerUsuarioSucursal(UsuarioDTO usuario) throws Exception;
 	public UsuarioDTO findByUserName(String username) throws Exception;
-	
+	public Collection<RolDTO> findRolesByUrl(String url) throws Exception;	
 }

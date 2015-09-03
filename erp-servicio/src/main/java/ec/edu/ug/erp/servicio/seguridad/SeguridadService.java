@@ -1,9 +1,11 @@
 package ec.edu.ug.erp.servicio.seguridad;
 
+import java.util.Collection;
 import java.util.List;
 
 import ec.edu.ug.erp.dto.administracion.EmpresaDTO;
 import ec.edu.ug.erp.dto.seguridad.ModuloDTO;
+import ec.edu.ug.erp.dto.seguridad.RolDTO;
 import ec.edu.ug.erp.dto.seguridad.UsuarioDTO;
 import ec.edu.ug.erp.dto.seguridad.UsuarioSucursalDTO;
 
@@ -24,5 +26,6 @@ public interface SeguridadService {
 	public ModuloDTO saveModulo(ModuloDTO modulo) throws Exception;
 	public List<ModuloDTO> loadMenu(Object... filters) throws Exception;
 	public List<ModuloDTO> obtenerOpcionesPermitidas(UsuarioSucursalDTO usuarioAutenticado) throws Exception;
+	public Collection<RolDTO> findRolesByUrl(String url) throws Exception;
 
 }

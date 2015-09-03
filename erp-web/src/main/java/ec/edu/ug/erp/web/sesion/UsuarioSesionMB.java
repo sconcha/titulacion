@@ -14,6 +14,7 @@ import ec.edu.ug.erp.dto.rrhh.PersonaDTO;
 import ec.edu.ug.erp.dto.seguridad.UsuarioDTO;
 import ec.edu.ug.erp.dto.seguridad.UsuarioSucursalDTO;
 import ec.edu.ug.erp.servicio.seguridad.SeguridadService;
+import ec.edu.ug.erp.util.crypto.CryptoUtils;
 import ec.edu.ug.erp.util.dto.DTOUtils;
 import ec.edu.ug.erp.util.dto.generic.impl.GenericDTO.Estado;
 import ec.edu.ug.erp.util.jsf.GenericManagedBean;
@@ -48,9 +49,10 @@ public class UsuarioSesionMB extends GenericManagedBean {
 	
 	public void load(){
 		UsuarioDTO usuario=new UsuarioDTO();
-		usuario.setCodigo("JALVARADO");		
-		usuario.setClave("123");
+		usuario.setCodigo("JALVARADO");
+		usuario.setClave(CryptoUtils.encodeSHA("12345"));
 		usuario.setEstado(Estado.ACTIVO);
+		System.out.println(usuario+"  "+usuario.getClave());
 		try {
 			usuario=servicio.obtenerUsuarioSesion(usuario,null);
 			

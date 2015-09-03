@@ -49,6 +49,9 @@ public interface IConstantes {
 	public static final String FIELD_ESTADO="estado";
 	public static final String FIELD_ID="id";
 	public static final String FIELD_USUARIOS_ROLES_FETCH="usuarioRolDTOs";
+	public static final String FIELD_ACIONLISTAR="accionListar";
+	
+	public static final String POINT=".";
 	
 	/*
 	 *SECURITY CONFIG 

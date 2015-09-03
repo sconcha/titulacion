@@ -1,11 +1,14 @@
 package ec.edu.ug.erp.dao.seguridad.impl;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.criterion.Subqueries;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,6 +17,8 @@ import ec.edu.ug.erp.dto.administracion.EmpresaDTO;
 import ec.edu.ug.erp.dto.seguridad.GenericSeguridadDTO;
 import ec.edu.ug.erp.dto.seguridad.ModuloDTO;
 import ec.edu.ug.erp.dto.seguridad.ModuloDTO.Tipo;
+import ec.edu.ug.erp.dto.seguridad.RolDTO;
+import ec.edu.ug.erp.dto.seguridad.TareaDTO;
 import ec.edu.ug.erp.dto.seguridad.TareaRolDTO;
 import ec.edu.ug.erp.dto.seguridad.UsuarioDTO;
 import ec.edu.ug.erp.dto.seguridad.UsuarioRolDTO;
@@ -177,10 +182,30 @@ public class SeguridadDaoImpl extends GenericDAOImpl<GenericSeguridadDTO<?>> imp
 		criteria=DetachedCriteria.forClass(UsuarioRolDTO.class, ALIAS_USUARIOROL);
 		DAOUtils.addInnerJoins(criteria, FIELD_ROL,FIELD_USUARIO);
 		criteria.add(Restrictions.eq(FIELD_USUARIO, usuario));
-		criteria.add(Restrictions.eq(FIELD_ESTADO, GenericDTO.Estado.ACTIVO));
 		usuariosRol=findByCriteria(criteria);		
 		usuario.setUsuarioRolDTOs(usuariosRol);		
 		return usuario;
+	}
+	
+	public Collection<RolDTO> findRolesByUrl(String url) throws Exception{
+		DetachedCriteria criteriaRol=DetachedCriteria.forClass(RolDTO.class, ALIAS_ROL);
+		criteriaRol.add(Restrictions.eq(FIELD_ESTADO, Estado.ACTIVO));
+		
+		DetachedCriteria criteriaTareaRol=DetachedCriteria.forClass(TareaRolDTO.class, ALIAS_TAREAROL);
+		DAOUtils.addInnerJoins(criteriaTareaRol, FIELD_ROL,FIELD_TAREA);		
+		criteriaTareaRol.add(Restrictions.eqProperty(ALIAS_TAREAROL+POINT+FIELD_ROL+POINT+FIELD_ID  , ALIAS_ROL+POINT+FIELD_ID));
+		criteriaTareaRol.add(Restrictions.eq(FIELD_ESTADO, Estado.ACTIVO));
+		
+		DetachedCriteria criteriaTarea=DetachedCriteria.forClass(TareaDTO.class, ALIAS_TAREA);
+		DAOUtils.addInnerJoins(criteriaTarea, FIELD_MODULO);
+		criteriaTarea.add(Restrictions.like(FIELD_MODULO+POINT+FIELD_ACIONLISTAR, url,MatchMode.END));
+		criteriaTareaRol.add(Restrictions.eqProperty(FIELD_TAREA, ALIAS_TAREAROL+POINT+FIELD_TAREA ));
+		criteriaTarea.add(Restrictions.eq(FIELD_ESTADO, Estado.ACTIVO));
+		
+		criteriaTareaRol.add(Subqueries.exists(criteriaTarea));
+		criteriaRol.add(Subqueries.exists(criteriaTareaRol));
+		
+		return findByCriteria(criteriaRol);
 	}
 	
 	

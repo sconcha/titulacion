@@ -23,6 +23,7 @@ import ec.edu.ug.erp.dto.seguridad.TareaRolDTO;
 import ec.edu.ug.erp.dto.seguridad.UsuarioDTO;
 import ec.edu.ug.erp.dto.seguridad.UsuarioRolDTO;
 import ec.edu.ug.erp.dto.seguridad.UsuarioSucursalDTO;
+import ec.edu.ug.erp.util.crypto.CryptoUtils;
 import ec.edu.ug.erp.util.dao.DAOUtils;
 import ec.edu.ug.erp.util.dao.impl.GenericDAOImpl;
 import ec.edu.ug.erp.util.dto.DTOUtils;
@@ -109,8 +110,14 @@ public class SeguridadDaoImpl extends GenericDAOImpl<GenericSeguridadDTO<?>> imp
 		if(empresa!=null)
 			criteria.add(Restrictions.eq(ALIAS_EMPRESAPERSONA_TO_EMPRESA, empresa));
 		criteria.add(Restrictions.eq(FIELD_CODIGO, usuario.getCodigo()));
-		criteria.add(Restrictions.eq(FIELD_CLAVE, usuario.getClave()));
-		UsuarioDTO usuarioResult=findFirstByCriteria(criteria);		
+
+		List<UsuarioDTO> coincidencias=findByCriteria(criteria);
+		
+		UsuarioDTO usuarioResult=null;		
+		for (UsuarioDTO user : coincidencias) {
+			if(CryptoUtils.matches(usuario.getClave(), user.getClave()))
+				usuarioResult=user;
+		}		
 		return usuarioResult;
 	}
 
@@ -174,7 +181,10 @@ public class SeguridadDaoImpl extends GenericDAOImpl<GenericSeguridadDTO<?>> imp
 	}
 	
 	@Transactional(readOnly=true)
-	public UsuarioDTO findByUserName(String username) throws Exception{		
+	public UsuarioDTO findByUserName(String username) throws Exception{
+		
+		System.out.println("USER NAME FINDING... "+username);
+		
 		DetachedCriteria criteria=DetachedCriteria.forClass(UsuarioDTO.class,ALIAS_USUARIO);
 		criteria.add(Restrictions.eq(FIELD_CODIGO, username));
 		UsuarioDTO  usuario=findFirstByCriteria(criteria);
@@ -188,6 +198,10 @@ public class SeguridadDaoImpl extends GenericDAOImpl<GenericSeguridadDTO<?>> imp
 	}
 	
 	public Collection<RolDTO> findRolesByUrl(String url) throws Exception{
+		
+		System.out.println("URL: "+url);
+		
+		
 		DetachedCriteria criteriaRol=DetachedCriteria.forClass(RolDTO.class, ALIAS_ROL);
 		criteriaRol.add(Restrictions.eq(FIELD_ESTADO, Estado.ACTIVO));
 		
@@ -205,7 +219,12 @@ public class SeguridadDaoImpl extends GenericDAOImpl<GenericSeguridadDTO<?>> imp
 		criteriaTareaRol.add(Subqueries.exists(criteriaTarea));
 		criteriaRol.add(Subqueries.exists(criteriaTareaRol));
 		
-		return findByCriteria(criteriaRol);
+		List<RolDTO> roles=findByCriteria(criteriaRol);
+		System.out.println("******************INI ROLES**********************");
+		roles.forEach((r)->System.out.println(r));
+		System.out.println("******************FIN ROLES**********************");
+		
+		return roles;
 	}
 	
 	

@@ -38,16 +38,14 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username)
 			throws UsernameNotFoundException {
+	
 		UsuarioDTO usuario;
 		try {
 			usuario=seguridadDao.findByUserName(username);
 		} catch (Exception e) {
 			throw new UsernameNotFoundException(e.getMessage());
-		}
-		
-		
+		}		
 		List<GrantedAuthority> authorities = usuarioRolDTOToGrantedAutority(usuario.getUsuarioRolDTOs());
-
 		return usuarioDTOToUser(usuario, authorities);
 		
 	}
@@ -68,7 +66,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	/**
 	 * recibe UsuarioDTO y lista de org.springframework.security.core.GrantedAuthority; y crea unorg.springframework.security.core.userdetails.User
 	 * 
-	 * @author Joel
+	 * @author Joel Alvarado
 	 * @param user
 	 * @param authorities
 	 * @return

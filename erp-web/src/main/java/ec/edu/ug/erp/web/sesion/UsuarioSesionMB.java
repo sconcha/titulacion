@@ -5,8 +5,11 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
+import javax.servlet.ServletException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.User;
 
 import ec.edu.ug.erp.dto.administracion.EmpresaDTO;
 import ec.edu.ug.erp.dto.rrhh.EmpresaPersonaDTO;
@@ -14,9 +17,7 @@ import ec.edu.ug.erp.dto.rrhh.PersonaDTO;
 import ec.edu.ug.erp.dto.seguridad.UsuarioDTO;
 import ec.edu.ug.erp.dto.seguridad.UsuarioSucursalDTO;
 import ec.edu.ug.erp.servicio.seguridad.SeguridadService;
-import ec.edu.ug.erp.util.crypto.CryptoUtils;
 import ec.edu.ug.erp.util.dto.DTOUtils;
-import ec.edu.ug.erp.util.dto.generic.impl.GenericDTO.Estado;
 import ec.edu.ug.erp.util.jsf.GenericManagedBean;
 
 @Named("usuarioSesionMB")
@@ -40,47 +41,42 @@ public class UsuarioSesionMB extends GenericManagedBean {
 	
 	@PostConstruct
 	public void init(){
-		System.out.println("INICIANDO USUARIO SESION");
-		
-		load();
-		
-		
+				
+	}
+
+	public void validaSesion(){
+		if(!DTOUtils.isPersistent(getUsuario())){
+			try {
+				if(isAutenticado())
+					getHttpServletRequest().logout();
+			} catch (ServletException e) {
+				addMessageError(e.getMessage());
+			}
+		}		
 	}
 	
 	public void load(){
-		UsuarioDTO usuario=new UsuarioDTO();
-		usuario.setCodigo("JALVARADO");
-		usuario.setClave(CryptoUtils.encodeSHA("12345"));
-		usuario.setEstado(Estado.ACTIVO);
-		System.out.println(usuario+"  "+usuario.getClave());
+		
+		Authentication auth=(Authentication)getUsuarioAutenticado();
+		User user=(User)auth.getPrincipal();		
+		usuario.setCodigo(user.getUsername());
 		try {
-			usuario=servicio.obtenerUsuarioSesion(usuario,null);
-			
+			usuario=servicio.obtenerUsuarioSesion(usuario,null);			
 			if(DTOUtils.isPersistent(usuario)){
 				setUsuariosSucursal(servicio.obtenerUsuariosSucursal(usuario));
 				setUsuarioSucursal(servicio.obtenerUsuarioSucursal(usuario));
 				setEmpresa(usuario.getEmpresaPersona().getEmpresa());
 				setEmpresaPersona(usuario.getEmpresaPersona());
 				setPersona(usuario.getEmpresaPersona().getPersona());
+			}else{
+				if(isAutenticado())
+					getHttpServletRequest().logout();
 			}
 			
 		} catch (Exception e) {
-			e.printStackTrace();
 			addMessageError(e.getMessage());
 		}
 		
-		
-		System.out.println(usuario);
-		System.out.println(usuario.getEmpresaPersona());
-		System.out.println(usuario.getEmpresaPersona().getPersona());
-		System.out.println(usuario.getEmpresaPersona().getEmpresa());
-		
-		System.out.println(getUsuariosSucursal());
-		
-		System.out.println("usuarios sucursal");
-		getUsuariosSucursal().forEach((x)->System.out.println(x));
-		System.out.println("sucursales");
-		getUsuariosSucursal().forEach((x)->System.out.println(x.getSucursal()));
 	}
 	
 	

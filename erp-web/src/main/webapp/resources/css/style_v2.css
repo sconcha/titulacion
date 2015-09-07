@@ -18,25 +18,36 @@ h1, .h1, h2, .h2, h3, .h3 {
   margin:0;
 }
 
-#logo {
+#head-info{
+  /* background:#505559; */
   position:relative;
-  background:#505559;
+  padding-left: 0;
 }
+#logo {
+  
+/*   background:#505559; */
+  padding-left: 0;
+  float: left;
+}
+
 #logo a {
   color: #D8D8D8;
-font-family: "Righteous",cursive;
-display: block;
-font-size: 20px;
-line-height: 50px;
-  background: url(../img/logo.png) right 42px no-repeat;
   -webkit-transition: 0.5s;
   -moz-transition: 0.5s;
   -o-transition: 0.5s;
   transition: 0.5s;
 }
+
 #logo a:hover {
-  background-position: right 25px;
+  background-position: right 20px;
   text-decoration: none;
+}
+#toogler {  
+ /*  background:#505559; */
+  padding-right: 0;
+  float: right;
+  vertical-align: middle;
+  padding-top: 15px;
 }
 .navbar {
   margin: 0;
@@ -582,12 +593,24 @@ ul.DTTT_dropdown.dropdown-menu > li:hover > a {
   -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
   box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
 }
-#breadcrumb {
+#tabs {
   padding: 0;
   line-height: 40px;
   background: #353535;
   margin-bottom: 30px;
+  
 }
+
+#tabs > .nav.nav-tabs > li > a{
+  text-align: center;
+  color:#9C9A78;
+}
+
+#tabs > .nav.nav-tabs > li.active > a{
+  text-align: center;
+  color:#353535;
+}
+
 .breadcrumb {
   padding: 0 15px;
   background: none;

@@ -1,5 +1,14 @@
 package ec.edu.ug.erp.util.constantes;
 
+
+/**
+ * interfaz con constantes usadas en el proyecto
+ * 
+ * @author Joel Alvarado
+ * @version 1.0
+ * @since 2015/09/01
+ *
+ */
 public interface IConstantes {
 
 	public static final String ALIAS_MODULO="modulo";
@@ -52,16 +61,22 @@ public interface IConstantes {
 	public static final String FIELD_ACIONLISTAR="accionListar";
 	
 	public static final String POINT=".";
+	public static final String STRING_EMPTY="";
 	
 	/*
 	 *SECURITY CONFIG 
 	 */
-	public static final String URL_LOGIN="/login";
-	public static final String URL_LOGIN_ERROR="/login?error";
-	public static final String URL_LOGOUT="/logout";
-	public static final String URL_ACCESDENIED="/403";	
+	public static final String URL_LOGIN="/login.jsf?faces-redirect=true";
+	public static final String URL_LOGIN_PROCESSING="/login";
+	public static final String URL_SUCCESS="/pages/index.jsf?faces-redirect=true";
+	public static final String URL_LOGIN_ERROR="/login.jsf?error";
+	public static final String URL_LOGOUT="/login.jsf?faces-redirect=true";
+	public static final String URL_ACCESDENIED="/403.html";	
 	public static final String PARAM_USERNAME="username";
 	public static final String PARAM_PASSWORD="password";
+	
+	public static final String PATH_FACES_RESOURCES="/javax.faces.resource/**";
+	public static final String PATH_SECURE_PAGES="/pages/**";
 	
 	
 	

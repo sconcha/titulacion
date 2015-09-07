@@ -7,7 +7,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 public class CryptoUtils {
 
-	private static PasswordEncoder encoder=new BCryptPasswordEncoder();
+	private static final int STRENGTH=5;
+	
+	private static PasswordEncoder encoder=new BCryptPasswordEncoder(STRENGTH);
 	private static ShaPasswordEncoder eSha=new ShaPasswordEncoder();
 	private static Md5PasswordEncoder eMd5=new Md5PasswordEncoder();
 	
@@ -26,6 +28,9 @@ public class CryptoUtils {
 		return eMd5.encodePassword(password, key);
 	}
 	
+	public static boolean matches(String password,String encodedPassword){
+		return getEncoder().matches(password, encodedPassword);
+	}
 	
 	
 	public static PasswordEncoder getEncoder() {
@@ -38,6 +43,9 @@ public class CryptoUtils {
 		System.out.println("BCRYPT "+encode(password));
 		System.out.println("MD5 "+encodeMD5(password));
 		System.out.println("SHA "+encodeSHA(password));
+		
+		System.out.println(getEncoder().matches(password, encode(password)));
+		
 
 
 	}

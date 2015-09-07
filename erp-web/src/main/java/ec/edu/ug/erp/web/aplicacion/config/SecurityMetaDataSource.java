@@ -29,19 +29,16 @@ public class SecurityMetaDataSource implements FilterInvocationSecurityMetadataS
 				.getRequest();
 
 		String urlWithoutContextPath = request.getRequestURI().substring(request.getContextPath().length());
-		
-		System.out.println(urlWithoutContextPath);
-		
+				
 		try {
 			Collection<RolDTO> roles= seguridad.findRolesByUrl(urlWithoutContextPath);
 			if(roles!=null&&!roles.isEmpty()){
 				this.configAttributes=new ArrayList<ConfigAttribute>();
-				roles.forEach((rol)->(configAttributes.add(rol)));
+				roles.forEach(rol->configAttributes.add(rol));				
 			}
 		} catch (Exception e) {
 			this.configAttributes=null;
 		}
-		
 		return getAllConfigAttributes();
 	}
 

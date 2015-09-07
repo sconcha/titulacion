@@ -4,7 +4,10 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
-	 template="/WEB-INF/templates/tmpl_principal.xhtml">
+	 template="/WEB-INF/templates/tmpl_indice.xhtml">
+	 <ui:define name="contenido">
+	 	<ui:include src="/pages/general/dashboard.xhtml" />
+	 </ui:define>
 	 
 	 
 	</ui:composition>

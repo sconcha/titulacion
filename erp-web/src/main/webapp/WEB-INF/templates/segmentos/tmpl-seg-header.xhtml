@@ -8,12 +8,8 @@
 
 	<h:form>
 
-		<!--Start Header-->
-		<div id="screensaver">
-			<canvas id="canvas"></canvas>
-			<i class="fa fa-lock" id="screen_unlock"></i>
-		</div>
-		<div id="modalbox">
+	
+<!-- 		<div id="modalbox">
 			<div class="devoops-modal">
 				<div class="devoops-modal-header">
 					<div class="modal-header-name">
@@ -27,32 +23,27 @@
 				<div class="devoops-modal-inner"></div>
 				<div class="devoops-modal-bottom"></div>
 			</div>
-		</div>
+		</div> -->
 		<header class="navbar">
-			<div class="container-fluid expanded-panel">
+			<div class="container-fluid">
 				<div class="row">
 
-					<!-- 					<div id="logo" class="col-xs-12 col-sm-2">
-
-						<a href="index.jsf" style="padding: 0px; margin: 0px;"> 
-						<h:graphicImage
-								library="images" name="logo_empresa_default.jpg" height="40" />
-						 Erp Web
-
-						</a>
+					<div id="head-info" class="col-xs-12 col-sm-2">
+						<div id="logo">
+							<a href="#" style="padding: 0px; margin: 0px;"> <h:graphicImage
+									library="images" name="logo_empresa_default.jpg" height="50" />
+							</a>
+						</div>
+						<div id="toogler">
+							<a href="#" class="show-sidebar"> <i class="fa fa-bars"></i></a>
+						</div>
 
 					</div>
- -->
+
 					<div id="top-panel" class="col-xs-12 col-sm-10">
 						<div class="row">
 							<div class="col-xs-8 col-sm-4">
-								<!--
-								<div id="search">
-									<input type="text" placeholder="search" /> <i
-										class="fa fa-search"></i>
-								</div>
-							 -->
-
+								<!-- 							 
 								<ul class="nav navbar-nav panel-menu">
 									<li class="dropdown empresa"><a href="#"
 										class="dropdown-toggle" data-toggle="dropdown"> <i
@@ -63,9 +54,49 @@
 
 
 										</ul></li>
-								</ul>
+								
+									<li class="dropdown empresa"><a href="#"
+										class="dropdown-toggle" data-toggle="dropdown"> <i
+											class="fa fa-building-o"></i> <span class="badge empresa">#{usuarioSesionMB.usuarioSucursal.sucursal.descripcion}</span>
+									</a>
+										<ul class="dropdown-menu">
+											<ui:repeat var="suc"
+												value="#{usuarioSesionMB.usuariosSucursal}">
+												<li><a href="#"> <span>#{suc.sucursal.codigo}
+															- #{suc.sucursal.descripcion}</span></a></li>
+											</ui:repeat>
 
-								<ul class="nav navbar-nav panel-menu">
+										</ul></li> 
+								</ul>
+								-->
+
+
+								<div id="search">
+
+									<input type="text" placeholder="search" /> <i
+										class="fa fa-search"></i>
+								</div>
+
+
+							</div>
+
+							<div class="col-xs-4 col-sm-8 top-panel-right">
+								<a href="#" class="about pull-right"><span
+									class="fa fa-info-circle"></span></a>
+
+
+								<ul class="nav navbar-nav pull-right panel-menu">
+
+									<li class="dropdown empresa"><a href="#"
+										class="dropdown-toggle" data-toggle="dropdown"> <i
+											class="fa fa-building"></i> <span class="badge">#{usuarioSesionMB.empresa.descripcion}</span>
+									</a>
+										<ul class="dropdown-menu">
+											<li><a href="#"> <span>#{usuarioSesionMB.empresa.descripcion}</span></a></li>
+
+
+										</ul></li>
+
 									<li class="dropdown empresa"><a href="#"
 										class="dropdown-toggle" data-toggle="dropdown"> <i
 											class="fa fa-building-o"></i> <span class="badge empresa">#{usuarioSesionMB.usuarioSucursal.sucursal.descripcion}</span>
@@ -78,16 +109,12 @@
 											</ui:repeat>
 
 										</ul></li>
-								</ul>
-
-							</div>
-
-							<div class="col-xs-4 col-sm-8 top-panel-right">
-								<a href="#" class="about pull-right"><span
-									class="fa fa-info-circle"></span></a>
 
 
-								<ul class="nav navbar-nav pull-right panel-menu">
+
+
+									<!-- 
+									
 									<li class="hidden-xs"><a href="index.jsf"
 										class="modal-link"> <i class="fa fa-bell"></i> <span
 											class="badge">7</span>
@@ -100,15 +127,19 @@
 										class="ajax-link"> <i class="fa fa-envelope"></i> <span
 											class="badge">7</span>
 									</a></li>
+									
+									 -->
 
 									<li class="dropdown"><a href="#"
 										class="dropdown-toggle account" data-toggle="dropdown">
 											<div class="avatar">
 												<h:graphicImage styleClass="img-circle" library="img"
-													name="avatar/avatar_default_#{usuarioSesionMB.persona.genero.value}.png" height="40" />
+													name="avatar/avatar_default_#{usuarioSesionMB.persona.genero.value}.png"
+													height="40" />
 											</div> <i class="fa fa-angle-down pull-right"></i>
 											<div class="user-mini pull-right">
-												<span class="welcome">Bienvenido,</span> <span> #{usuarioSesionMB.persona.razonSocial}</span>
+												<span class="welcome">Bienvenido,</span> <span>
+													#{usuarioSesionMB.persona.razonSocial}</span>
 											</div>
 									</a>
 										<ul class="dropdown-menu">
@@ -117,16 +148,20 @@
 											<li><a href="/ajax/page_messages.html" class="ajax-link">
 													<i class="fa fa-envelope"></i> <span>Messages</span>
 											</a></li>
-											<li><a href="/ajax/gallery_simple.html" class="ajax-link">
-													<i class="fa fa-picture-o"></i> <span>Albums</span>
+											<li><a href="/ajax/gallery_simple.html"
+												class="ajax-link"> <i class="fa fa-picture-o"></i> <span>Albums</span>
 											</a></li>
 											<li><a href="/ajax/calendar.html" class="ajax-link">
 													<i class="fa fa-tasks"></i> <span>Tasks</span>
 											</a></li>
 											<li><a href="#"> <i class="fa fa-cog"></i> <span>Settings</span>
 											</a></li>
-											<li><a href="#"> <i class="fa fa-power-off"></i> <span>Logout</span>
-											</a></li>
+											<li><h:commandLink action="#{loginMB.logout}">
+													<i class="fa fa-power-off"></i>
+													<span>Logout</span>
+												</h:commandLink> <!-- <a href="#"> <i class="fa fa-power-off"></i> <span>Logout</span>
+											</a>
+											 --></li>
 										</ul></li>
 								</ul>
 							</div>

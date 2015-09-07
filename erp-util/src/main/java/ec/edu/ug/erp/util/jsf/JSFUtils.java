@@ -13,8 +13,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import ec.edu.ug.erp.util.constantes.IConstantes;
 
-public class JSFUtils {
+
+public class JSFUtils implements IConstantes {
 	
 	public static FacesContext getFacesContext() {
 		return FacesContext.getCurrentInstance();
@@ -107,7 +109,7 @@ public class JSFUtils {
 	}
 
 	public static void addMessageError(String _sumary, String _detail) {
-		addMessage(buildMessageInfo(_sumary, _detail));
+		addMessage(buildMessageError(_sumary, _detail));
 	}
 
 	public static void addMessageError(String _sumary) {

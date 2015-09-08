@@ -52,4 +52,25 @@
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
   </welcome-file-list>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/errorPages/404.html</location>
+	</error-page>
+	<error-page>
+		<error-code>403</error-code>
+		<location>/errorPages/403.html</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/errorPages/500.html</location>
+	</error-page>
+   <error-page>
+        <exception-type>java.lang.Throwable</exception-type>
+        <location>/errorPages/error.html</location>
+    </error-page>
+    <error-page>
+        <exception-type>javax.faces.application.ViewExpiredException</exception-type>
+        <location>/errorPages/viewExpired.html</location>
+    </error-page>
+  
 </web-app>

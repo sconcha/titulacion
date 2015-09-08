@@ -47,6 +47,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements ICon
 		http.authorizeRequests()
 		.accessDecisionManager(affirmativeBased)
 			.antMatchers(PATH_FACES_RESOURCES).permitAll()
+			.antMatchers(PATH_UNSECURE_PAGES).permitAll()
 //			.withObjectPostProcessor(new ObjectPostProcessor<FilterSecurityInterceptor>() {
 //				public <O extends FilterSecurityInterceptor> O postProcess(	O fsi) {					
 //					fsi.setSecurityMetadataSource(securityMetaDataSource);					

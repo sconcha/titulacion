@@ -88,7 +88,7 @@ public class UsuarioSesionMB extends GenericManagedBean {
 		this.usuario = usuario;
 	}
 	
-	public EmpresaDTO getEmpresa() {
+	public EmpresaDTO getEmpresa() {		
 		return empresa;
 	}
 

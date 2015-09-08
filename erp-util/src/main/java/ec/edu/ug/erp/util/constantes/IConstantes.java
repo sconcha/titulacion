@@ -71,12 +71,13 @@ public interface IConstantes {
 	public static final String URL_SUCCESS="/pages/index.jsf?faces-redirect=true";
 	public static final String URL_LOGIN_ERROR="/login.jsf?error";
 	public static final String URL_LOGOUT="/login.jsf?faces-redirect=true";
-	public static final String URL_ACCESDENIED="/403.html";	
+	public static final String URL_ACCESDENIED="/errorPages/403.html";	
 	public static final String PARAM_USERNAME="username";
 	public static final String PARAM_PASSWORD="password";
 	
 	public static final String PATH_FACES_RESOURCES="/javax.faces.resource/**";
 	public static final String PATH_SECURE_PAGES="/pages/**";
+	public static final String PATH_UNSECURE_PAGES="/errorPages/**";
 	
 	
 	

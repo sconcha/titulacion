@@ -17,6 +17,7 @@ public class ConfiguracionMB extends TemplateMB {
 	@PostConstruct
 	public void init(){
 		System.out.println("INICIANDO APLICACION");
+		getUsuarioSesion().validaSesion();
 	}
 	
 	

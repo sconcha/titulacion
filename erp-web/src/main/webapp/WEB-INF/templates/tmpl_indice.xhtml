@@ -3,46 +3,37 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui"
+	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions"
 	template="/WEB-INF/templates/tmpl_principal.xhtml">
 	<ui:define name="lienzo">
-	<div class="row">
-		<div id="tabs" class="col-xs-12">
-			<!-- 
-				<ol class="breadcrumb pull-left">
-					<li><a href="index.jsf">Home</a></li>
-					<li><a href="#">Dashboard</a></li>
-				</ol>
+		<p:outputPanel>
+			<div class="row">
+				<div id="tabs" class="col-xs-12">
 
-				 -->
-				 <!-- Nav tabs -->
-  <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab"> <i class="fa fa-home"></i> Home </a></li>
-    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile<i class="fa fa-close"></i></a></li>
-    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages<i class="fa fa-close"></i></a></li>
-    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings<i class="fa fa-close"></i></a></li>
-  </ul>
-			
-		<!-- 	<div id="social" class="pull-right">
-				<a href="#"><i class="fa fa-google-plus"></i></a> <a href="#"><i
-					class="fa fa-facebook"></i></a> <a href="#"><i
-					class="fa fa-twitter"></i></a> <a href="#"><i
-					class="fa fa-linkedin"></i></a> <a href="#"><i
-					class="fa fa-youtube"></i></a>
-			</div> -->
-		</div>
-	</div>
-	 <!-- Tab panes -->
-  <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="home">...1</div>
-    <div role="tabpanel" class="tab-pane" id="profile">...2</div>
-    <div role="tabpanel" class="tab-pane" id="messages">...3</div>
-    <div role="tabpanel" class="tab-pane" id="settings">...4</div>
-  </div>
-	
-	<ui:insert name="contenido">
-	</ui:insert>
-	
+					<ul class="nav nav-tabs" role="tablist">
+						<ui:repeat var="option" value="#{tabOptionsMB.options}">
+
+							<li role="presentation"><a href="##{option.codigo}"
+								aria-controls="#{option.codigo}" role="tab" data-toggle="tab">
+									<i class="#{option.icono}"></i> #{option.descripcion}
+							</a></li>
+
+						</ui:repeat>
+					</ul>
+
+				</div>
+			</div>
+
+			<div class="tab-content">
+				<ui:repeat var="option" value="#{tabOptionsMB.options}">
+
+					<div role="tabpanel" class="tab-pane " id="#{option.codigo}">
+						<o:resourceInclude path="#{option.accionListar}" />
+					</div>
+				</ui:repeat>
+			</div>
+			</p:outputPanel>
 	</ui:define>
-
+	
 </ui:composition>

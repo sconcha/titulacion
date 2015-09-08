@@ -71,7 +71,7 @@ public interface ITableFieldNames {
 	public static final String USUARIO_ID="USUARIO_ID";
 	public static final String SUCURSAL_ID="SUCURSAL_ID";
 	public static final String PREDETERMINADO="PREDETERMINADO";
-	
+	public static final String MANAGEDBEAN="MANAGEDBEAN";
 	
 	
 }

@@ -63,6 +63,9 @@ public class ModuloDTO extends GenericSeguridadDTO<ModuloDTO>{
 	@Column(name=NIVEL)
 	private Integer nivel;
 	
+	@Column(name=MANAGEDBEAN)
+	private String managedBean;
+	
 	@Column(name=TIPO,length=1)
 	@Type(type=Tipo.TYPE)
 	private Tipo tipo;
@@ -192,24 +195,28 @@ public class ModuloDTO extends GenericSeguridadDTO<ModuloDTO>{
 	 *
 	 */
 	public enum Tipo implements StringValuedEnum<Tipo> {
-		 MODULO	 ("M")
-		,MENU	 ("U")
-		,OPCION	 ("O")
-		,POPUP	 ("P")
-		,DIALOG	 ("D")
-		,REPORTE ("R")
-		,ARCHIVO ("A")
+		 MODULO	 		("M")
+		,MENU	 		("U")
+		,OPCION	 		("O")
+		,POPUP	 		("P")
+		,DIALOG	 		("D")
+		,REPORTE 		("R")
+		,ARCHIVO 		("A")
+		,WELCOMEPAGE 	("W")
+		
 		;
 
 		public static class Type extends StringValuedEnumType<Tipo> {}
 		public static final String TYPE = "ec.edu.ug.erp.dto.seguridad.ModuloDTO$Tipo$Type";
 
-		public boolean isModulo() 	 { return this.equals(MODULO); 		}
-		public boolean isMenu() 	 { return this.equals(MENU); 		}
-		public boolean isOpcion()  	 { return this.equals(OPCION); 		}
-		public boolean isPopup()  	 { return this.equals(POPUP); 		}
-		public boolean isDialog()    { return this.equals(DIALOG); 		}
-		public boolean isReporte()   { return this.equals(REPORTE);		}
+		public boolean isModulo() 	 	{ return this.equals(MODULO); 		}
+		public boolean isMenu() 	 	{ return this.equals(MENU); 		}
+		public boolean isOpcion()  	 	{ return this.equals(OPCION); 		}
+		public boolean isPopup()  	 	{ return this.equals(POPUP); 		}
+		public boolean isDialog()    	{ return this.equals(DIALOG); 		}
+		public boolean isReporte()   	{ return this.equals(REPORTE);		}
+		public boolean isArchivo()   	{ return this.equals(ARCHIVO);		}
+		public boolean isWelcomePage()  { return this.equals(WELCOMEPAGE);	}
 
 		private String val;
 		private String labelKey;

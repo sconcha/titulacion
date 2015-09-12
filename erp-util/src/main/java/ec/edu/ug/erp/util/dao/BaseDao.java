@@ -7,7 +7,6 @@ import java.util.Map;
 
 import org.hibernate.Session;
 import org.hibernate.criterion.DetachedCriteria;
-import org.springframework.data.repository.NoRepositoryBean;
 
 import ec.edu.ug.erp.util.dto.generic.impl.GenericDTO;
 
@@ -18,7 +17,6 @@ import ec.edu.ug.erp.util.dto.generic.impl.GenericDTO;
  * @see <a href="http://www.genbetadev.com/java-j2ee/spring-framework-el-patron-dao-ii">http://www.genbetadev.com/java-j2ee/spring-framework-el-patron-dao-ii</a>
  *
  */
-@NoRepositoryBean
 public interface BaseDao<X extends GenericDTO<?>, E extends Serializable> {
 
     public <T extends X> void deleteAll(Collection<T> instances) throws Exception;
@@ -52,6 +50,8 @@ public interface BaseDao<X extends GenericDTO<?>, E extends Serializable> {
     public <T extends X> List<T> findAll(Class<T> clazz) throws Exception;
 
     public <T extends X> T findById(E id,Class<T> clazz) throws Exception;
+    
+    public <T extends X> T findFirstByExample(final T instance) throws Exception;
     
     public Session getActiveSession();
 

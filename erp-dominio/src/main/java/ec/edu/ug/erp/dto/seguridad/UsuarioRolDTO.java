@@ -11,32 +11,36 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import ec.edu.ug.erp.dto.administracion.AlmacenDTO;
+import ec.edu.ug.erp.dto.administracion.SucursalDTO;
+import ec.edu.ug.erp.util.constantes.ISchemaNames;
+import ec.edu.ug.erp.util.constantes.ISequenceGenerators;
+import ec.edu.ug.erp.util.constantes.ISequenceTables;
+import ec.edu.ug.erp.util.constantes.ITableNames;
 
 @Entity
-@Table(name="USEGTUSUARIO_ROL")
+@Table(name=ITableNames.USUARIO_ROL,schema=ISchemaNames.SEGURIDAD)
 public class UsuarioRolDTO extends GenericSeguridadDTO<UsuarioRolDTO>{
 	
 	private static final long serialVersionUID = 9029604394724370809L;
 	
 	@Id
-	@SequenceGenerator(name = "SG_ROL", sequenceName = "USEGSROL", allocationSize=1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SG_ROL")
+	@SequenceGenerator(name = ISequenceGenerators.USUARIO_ROL, sequenceName = ISequenceTables.USUARIO_ROL, allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator=ISequenceGenerators.USUARIO_ROL)
 	private Long id;
 	
-	@JoinColumn(name="USUARIO_ID")
+	@JoinColumn(name=USUARIO_ID)
 	@ManyToOne(fetch=FetchType.LAZY)
 	private UsuarioDTO usuario;
 	
-	@JoinColumn(name="ROL")
+	@JoinColumn(name=ROL_ID)
 	@ManyToOne(fetch=FetchType.LAZY)
 	private RolDTO rol;
 	
-	@JoinColumn(name="ALMACEN")
+	@JoinColumn(name=SUCURSAL_ID)
 	@ManyToOne(fetch=FetchType.LAZY)
-	private AlmacenDTO almacen;
+	private SucursalDTO sucursal;
 	
-	@Column(name="CODIGO",length=50)
+	@Column(name=CODIGO,length=50)
 	private String codigo;
 	
 	
@@ -74,12 +78,12 @@ public class UsuarioRolDTO extends GenericSeguridadDTO<UsuarioRolDTO>{
 		this.rol = rol;
 	}
 
-	public AlmacenDTO getAlmacen() {
-		return almacen;
+	public SucursalDTO getSucursal() {
+		return sucursal;
 	}
-
-	public void setAlmacen(AlmacenDTO almacen) {
-		this.almacen = almacen;
+	
+	public void setSucursal(SucursalDTO sucursal) {
+		this.sucursal = sucursal;
 	}
 
 	

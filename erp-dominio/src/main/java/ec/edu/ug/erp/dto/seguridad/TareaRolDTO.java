@@ -10,22 +10,27 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import ec.edu.ug.erp.util.constantes.ISchemaNames;
+import ec.edu.ug.erp.util.constantes.ISequenceGenerators;
+import ec.edu.ug.erp.util.constantes.ISequenceTables;
+import ec.edu.ug.erp.util.constantes.ITableNames;
+
 @Entity
-@Table(name="USEGTTAREA_ROL")
+@Table(name=ITableNames.TAREA_ROL,schema=ISchemaNames.SEGURIDAD)
 public class TareaRolDTO extends GenericSeguridadDTO<TareaRolDTO>{
 	
 	private static final long serialVersionUID = 9029604394724370809L;
 	
 	@Id
-	@SequenceGenerator(name = "SG_ROL", sequenceName = "USEGSROL", allocationSize=1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SG_ROL")
+	@SequenceGenerator(name = ISequenceGenerators.TAREA_ROL, sequenceName = ISequenceTables.TAREA_ROL, allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator=ISequenceGenerators.TAREA_ROL)
 	private Long id;
 	
-	@JoinColumn(name="TAREA_ID")
+	@JoinColumn(name=TAREA_ID)
 	@ManyToOne(fetch=FetchType.LAZY)
 	private TareaDTO tarea;
 	
-	@JoinColumn(name="ROL")
+	@JoinColumn(name=ROL_ID)
 	@ManyToOne(fetch=FetchType.LAZY)
 	private RolDTO rol;
 	

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<meta charset="utf-8" />
+	<title>ERP v1 - Login</title>
+	<meta name="description" content="Template de aplicacion" />
+	<meta name="author" content="Joel Alvarado" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="shortcut icon" type="image/png" href="#{request.contextPath}/resources/images/favicon.png" />
+	<h:outputStylesheet library="plugins" name="bootstrap/bootstrap.min.css" />
+	<h:outputStylesheet library="plugins" name="bootstrap/bootstrap-theme.min.css" />
+	<h:outputStylesheet library="plugins" name="jquery-ui/jquery-ui.min.css" />
+	<h:outputStylesheet library="plugins" name="font-awesome-4.4.0/css/font-awesome.min.css" />
+	<h:outputStylesheet library="css" 	  name="app.css" />
+
+</h:head>
+<h:body>
+	<div id="mainWrapper">
+		<div class="login-container">
+			<div class="login-card">
+				<div class="login-form">
+					<h:form id="loginFormId" prependId="false"
+						styleClass="form-horizontal">
+
+						<p:messages />
+						<div class="input-group input-sm">
+
+							<h:outputLabel for="username" styleClass="input-group-addon">
+								<i class="fa fa-user"></i>
+							</h:outputLabel>
+							<h:inputText id="username" required="true"
+								value="#{loginMB.userName}" requiredMessage="Ingrese Usuario"
+								styleClass="form-control" name="inTxtUser" >
+								<p:watermark value="Usuario" for="username" />
+							</h:inputText>
+
+						</div>
+						<div class="input-group input-sm">
+
+							<h:outputLabel for="password" styleClass="input-group-addon">
+								<i class="fa fa-lock"></i>
+							</h:outputLabel>
+							<h:inputSecret id="password" styleClass="form-control"
+								required="true" value="#{loginMB.password}"
+								requiredMessage="Ingreses Clave" name="inTxtPasswordNm">
+								<p:watermark value="Clave" for="password" />
+							</h:inputSecret>
+
+						</div>
+
+						<div class="form-actions">
+							<h:commandButton id="btnLoginId" value="Login"
+								action="#{loginMB.login}"
+								styleClass="btn btn-block btn-primary btn-default"></h:commandButton>							
+
+						</div>
+					</h:form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</h:body>
+</html>

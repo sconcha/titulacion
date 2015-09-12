@@ -4,6 +4,18 @@
 		<wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
 		<wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
 		<wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <dependent-module archiveName="erp-util-1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/erp-util/erp-util">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="erp-dominio-1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/erp-dominio/erp-dominio">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="erp-dao-1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/erp-dao/erp-dao">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="erp-servicio-1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/erp-servicio/erp-servicio">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
 		<property name="java-output-path" value="target/classes"/>
         <property name="context-root" value="erp-web"/>
 	</wb-module>

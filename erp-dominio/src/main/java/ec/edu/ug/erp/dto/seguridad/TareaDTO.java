@@ -18,101 +18,105 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Type;
 
+import ec.edu.ug.erp.util.constantes.ISchemaNames;
+import ec.edu.ug.erp.util.constantes.ISequenceGenerators;
+import ec.edu.ug.erp.util.constantes.ISequenceTables;
+import ec.edu.ug.erp.util.constantes.ITableNames;
 import ec.edu.ug.erp.util.type.BooleanToCharType;
 import ec.edu.ug.erp.util.type.StringValuedEnum;
 import ec.edu.ug.erp.util.type.StringValuedEnumReflect;
 import ec.edu.ug.erp.util.type.StringValuedEnumType;
 
 @Entity
-@Table(name="USEGTTAREA")
+@Table(name=ITableNames.TAREA,schema=ISchemaNames.SEGURIDAD)
 public class TareaDTO extends GenericSeguridadDTO<TareaDTO>{
 	
 	private static final long serialVersionUID = 9029604394724370809L;
 	
 	@Id
-	@SequenceGenerator(name = "SG_TAREA", sequenceName = "USEGSTAREA", allocationSize=1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SG_TAREA")
+	@SequenceGenerator(name = ISequenceGenerators.TAREA, sequenceName = ISequenceTables.TAREA, allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator=ISequenceGenerators.TAREA)
 	private Long id;
 	
-	@JoinColumn(name="MODULO_ID")
+	@JoinColumn(name=MODULO_ID)
 	@ManyToOne(fetch=FetchType.LAZY)
 	private ModuloDTO modulo;
 	
-	@Column(name="CODIGO",length=50)
+	@Column(name=CODIGO,length=50)
 	private String codigo;
 	
-	@Column(name="CREAR")
+	@Column(name=CREAR)
 	@Type(type=BooleanToCharType.TYPE)
 	private boolean crear;
 	
-	@Column(name="EDITAR")
+	@Column(name=EDITAR)
 	@Type(type=BooleanToCharType.TYPE)
 	private boolean editar;
 	
-	@Column(name="PROCESAR")
+	@Column(name=PROCESAR)
 	@Type(type=BooleanToCharType.TYPE)
 	private boolean procesar;
 	
-	@Column(name="GENERAR")
+	@Column(name=GENERAR)
 	@Type(type=BooleanToCharType.TYPE)
 	private boolean generar;
 	
-	@Column(name="LISTAR")
+	@Column(name=LISTAR)
 	@Type(type=BooleanToCharType.TYPE)
 	private boolean listar;
 	
-	@Column(name="VER")
+	@Column(name=VER)
 	@Type(type=BooleanToCharType.TYPE)
 	private boolean ver;
 	
-	@Column(name="DUPLICAR")
+	@Column(name=DUPLICAR)
 	@Type(type=BooleanToCharType.TYPE)
 	private boolean duplicar;
 	
-	@Column(name="ENVIAR")
+	@Column(name=ENVIAR)
 	@Type(type=BooleanToCharType.TYPE)
 	private boolean enviar;
 	
-	@Column(name="RECUPERAR")
+	@Column(name=RECUPERAR)
 	@Type(type=BooleanToCharType.TYPE)
 	private boolean recuperar;
 	
-	@Column(name="REVERSAR")
+	@Column(name=REVERSAR)
 	@Type(type=BooleanToCharType.TYPE)
 	private boolean reversar;
 	
-	@Column(name="ELIMINAR")
+	@Column(name=ELIMINAR)
 	@Type(type=BooleanToCharType.TYPE)
 	private boolean eliminar;
 	
-	@Column(name="ANULAR")
+	@Column(name=ANULAR)
 	@Type(type=BooleanToCharType.TYPE)
 	private boolean anular;
 	
-	@Column(name="AUTORIZAR")
+	@Column(name=AUTORIZAR)
 	@Type(type=BooleanToCharType.TYPE)
 	private boolean autorizar;
 	
-	@Column(name="RECHAZAR")
+	@Column(name=RECHAZAR)
 	@Type(type=BooleanToCharType.TYPE)
 	private boolean rechazar;
 	
-	@Column(name="IMPRIMIR")
+	@Column(name=IMPRIMIR)
 	@Type(type=BooleanToCharType.TYPE)
 	private boolean imprimir;
 	
-	@Column(name="REPORTAR")
+	@Column(name=REPORTAR)
 	@Type(type=BooleanToCharType.TYPE)
 	private boolean reportar;
 
-	@Column(name="ACCIONGENERICA",length=500)
+	@Column(name=ACCIONGENERICA,length=500)
 	private String accionGenerica;
 
-	@Column(name="TIPO",length=1)
+	@Column(name=TIPO,length=1)
 	@Type(type=Tipo.TYPE)
 	private Tipo tipo;
 
-	@OneToMany(mappedBy="tarea",fetch=FetchType.LAZY)
+	@OneToMany(mappedBy=FIELD_TAREA,fetch=FetchType.LAZY)
 	private List<TareaRolDTO> tareaRolDTOs;
 	
 	public Long getId() {		

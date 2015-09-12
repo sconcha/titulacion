@@ -14,30 +14,32 @@ import javax.persistence.Transient;
 
 import org.hibernate.annotations.Type;
 
+import ec.edu.ug.erp.util.constantes.IConstantes;
+import ec.edu.ug.erp.util.constantes.ITableFieldNames;
 import ec.edu.ug.erp.util.dto.generic.IGenericDTO;
 import ec.edu.ug.erp.util.type.StringValuedEnum;
 import ec.edu.ug.erp.util.type.StringValuedEnumReflect;
 import ec.edu.ug.erp.util.type.StringValuedEnumType;
 
 @MappedSuperclass
-public abstract class GenericDTO<DTO extends GenericDTO<DTO>> implements IGenericDTO<Long>,Serializable {
+public abstract class GenericDTO<DTO extends GenericDTO<DTO>> implements IGenericDTO<Long>,Serializable,ITableFieldNames,IConstantes {
 	private static final long serialVersionUID = -374580369079967296L;
 	
 	@Transient
 	 private Class<DTO> clazz;
 	
-	@Column(name = "DESCRIPCION",length=500)
+	@Column(name = DESCRIPCION,length=500)
 	protected String descripcion;
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "FECHACREACION")
+	@Column(name = FECHACREACION)
 	protected Date fechaCreacion;
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "FECHAMODIFICACION")
+	@Column(name = FECHAMODIFICACION)
 	protected Date fechaModificacion;
 	
-	@Column(name = "ESTADO",length=2)
+	@Column(name = ESTADO,length=2)
 	@Type(type=Estado.TYPE)
 	protected Estado estado;
 		

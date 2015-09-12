@@ -10,7 +10,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.DetachedCriteria;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
+import org.springframework.data.repository.NoRepositoryBean;
+import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import ec.edu.ug.erp.util.dao.BaseDao;
@@ -25,6 +27,8 @@ import ec.edu.ug.erp.util.dto.generic.impl.GenericDTO;
  *      href="http://www.genbetadev.com/java-j2ee/spring-framework-el-patron-dao-ii">http://www.genbetadev.com/java-j2ee/spring-framework-el-patron-dao-ii</a>
  *
  */
+@Component
+@NoRepositoryBean
 @Transactional(readOnly=false)
 public abstract class BaseDaoHibernate<X extends GenericDTO<?>, E extends Serializable>
 		extends HibernateDaoSupport implements BaseDao<X, E> {
@@ -167,6 +171,16 @@ public abstract class BaseDaoHibernate<X extends GenericDTO<?>, E extends Serial
 			throw e;
 		}
 	}
+	
+	public <T extends X> T findFirstByCriteria(final DetachedCriteria criteria)
+			throws Exception {
+		try {
+			List<T> results=findByCriteria(criteria);
+			return (results!=null&&results.size()>0)?results.iterator().next():null;
+		} catch (final Exception e) {
+			throw e;
+		}
+	}
 
 	public <T extends X> List<T> findAll(Class<T> clazz) throws Exception {
 		return getHibernateTemplate().loadAll(clazz);
@@ -176,6 +190,13 @@ public abstract class BaseDaoHibernate<X extends GenericDTO<?>, E extends Serial
 		return getHibernateTemplate().get(clazz, id);
 
 	}
+	
+	public <T extends X> T findFirstByExample(final T instance) throws Exception {
+		List<T> results=findByExample(instance);
+		return (results!=null&&results.size()>0)?results.iterator().next():null;
+	}
+	
+	
 	
     public Session getActiveSession() {
         return currentSession();

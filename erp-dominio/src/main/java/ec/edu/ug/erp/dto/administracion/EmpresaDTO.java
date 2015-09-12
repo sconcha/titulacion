@@ -14,35 +14,42 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import ec.edu.ug.erp.dto.rrhh.EmpresaPersonaDTO;
+import ec.edu.ug.erp.dto.rrhh.PersonaDTO;
+import ec.edu.ug.erp.util.constantes.ISchemaNames;
+import ec.edu.ug.erp.util.constantes.ISequenceGenerators;
+import ec.edu.ug.erp.util.constantes.ISequenceTables;
+import ec.edu.ug.erp.util.constantes.ITableNames;
+
 
 @Entity
-@Table(name="UADMTEMPRESA")
+@Table(name=ITableNames.EMPRESA,schema=ISchemaNames.ADMINISTRACION)
 public class EmpresaDTO extends GenericAdministracionDTO<EmpresaDTO> {
 
 	private static final long serialVersionUID = 9029604394724370809L;
 	
 	@Id
-	@SequenceGenerator(name = "SG_EMPRESA", sequenceName = "UADMSEMPRESA", allocationSize=1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SG_EMPRESA")
+	@SequenceGenerator(name = ISequenceGenerators.EMPRESA, sequenceName = ISequenceTables.EMPRESA, allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator=ISequenceGenerators.EMPRESA)
 	private Long id;
 
-	@Column(name="CODIGO",length=10)
+	@Column(name=CODIGO,length=10)
 	private String codigo;
 	
-	@JoinColumn(name="PERSONA_ID")
+	@JoinColumn(name=PERSONA_ID)
 	@ManyToOne(fetch=FetchType.LAZY)
 	private PersonaDTO persona;
 	
-	@Column(name="RUTALOGO",length=300)
+	@Column(name=RUTALOGO,length=300)
 	private String rutaLogo;
 	
-	@Column(name="URL",length=300)
+	@Column(name=URL,length=300)
 	private String url;
 	
-	@OneToMany(mappedBy="empresa",fetch=FetchType.LAZY)
-	private List<AlmacenDTO> almacenesEmpresa;
+	@OneToMany(mappedBy=FIELD_EMPRESA,fetch=FetchType.LAZY)
+	private List<SucursalDTO> almacenesEmpresa;
 
-	@OneToMany(mappedBy="empresa",fetch=FetchType.LAZY)
+	@OneToMany(mappedBy=FIELD_EMPRESA,fetch=FetchType.LAZY)
 	private List<EmpresaPersonaDTO> empresaPersonaDTOs;
 
 	public Long getId() {		
@@ -87,11 +94,11 @@ public class EmpresaDTO extends GenericAdministracionDTO<EmpresaDTO> {
 		this.url = url;
 	}
 
-	public List<AlmacenDTO> getAlmacenesEmpresa() {
+	public List<SucursalDTO> getAlmacenesEmpresa() {
 		return almacenesEmpresa;
 	}
 
-	public void setAlmacenesEmpresa(List<AlmacenDTO> almacenesEmpresa) {
+	public void setAlmacenesEmpresa(List<SucursalDTO> almacenesEmpresa) {
 		this.almacenesEmpresa = almacenesEmpresa;
 	}
 	

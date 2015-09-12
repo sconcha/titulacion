@@ -14,29 +14,34 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import ec.edu.ug.erp.util.constantes.ISchemaNames;
+import ec.edu.ug.erp.util.constantes.ISequenceGenerators;
+import ec.edu.ug.erp.util.constantes.ISequenceTables;
+import ec.edu.ug.erp.util.constantes.ITableNames;
+
 
 @Entity
-@Table(name="UADMTDIVISION_NEGOCIO")
+@Table(name=ITableNames.DIVISION_NEGOCIO,schema=ISchemaNames.ADMINISTRACION)
 public class DivisionNegocioDTO extends GenericAdministracionDTO<DivisionNegocioDTO> {
 
 	private static final long serialVersionUID = 9029604394724370809L;
 	
 	@Id
-	@SequenceGenerator(name = "SG_EMPRESA", sequenceName = "UADMSEMPRESA", allocationSize=1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SG_EMPRESA")
+	@SequenceGenerator(name = ISequenceGenerators.DIVISION_NEGOCIO, sequenceName = ISequenceTables.DIVISION_NEGOCIO, allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator=ISequenceGenerators.DIVISION_NEGOCIO)
 	private Long id;
 
-	@Column(name="CODIGO",length=10)
+	@Column(name=CODIGO,length=10)
 	private String codigo;
 	
-	@JoinColumn(name="PADRE_ID")
+	@JoinColumn(name=PADRE_ID)
 	@ManyToOne(fetch=FetchType.LAZY)
 	private DivisionNegocioDTO padre;
 	
-	@Column(name="NIVEL")
+	@Column(name=NIVEL)
 	private Integer nivel;
 	
-	@OneToMany(mappedBy="padre",fetch=FetchType.LAZY)
+	@OneToMany(mappedBy=FIELD_PADRE,fetch=FetchType.LAZY)
 	private List<DivisionNegocioDTO> divisionNegocioDTOs;
 
 	public Long getId() {		
